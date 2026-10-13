@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Svitlana Sobkiv – Digital Project Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#2a2347;--blue:#5a4a8c;--lemon:#f1e6c4;--tang:#e8a07c;--mint:#a6d8c8;--pink:#e3b5d0;--hbg:#5a4a8c;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#0a0a1f}}
+:root[data-theme="dark"]{--ink:#0a0a1f}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:19px;line-height:1.5;background:var(--blue);color:var(--lemon);overflow-x:hidden;background-attachment:fixed}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:3px solid currentColor;outline-offset:4px}
+header{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;padding:calc(16px + env(safe-area-inset-top,0px)) 22px 40px;font-weight:600;background:linear-gradient(to bottom,var(--hbg) 0%,var(--hbg) 42%,transparent 100%);pointer-events:none}header a{pointer-events:auto}
+header nav{display:flex;gap:18px}header a{text-decoration:none}header a:hover{text-decoration:underline wavy}
+@media(max-width:640px){header nav a:nth-child(n+4){display:none}}
+section{position:relative}
+.wrap{max-width:1100px;margin:0 auto;padding:0 22px}
+/* hero */
+#hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 22px 40px}
+#name{margin:0;font-size:clamp(52px,15vw,220px);line-height:.85;letter-spacing:-.03em;font-variation-settings:'wdth' 75;display:flex;flex-wrap:wrap;gap:0 .02em;user-select:none}
+#name span{display:inline-block;font-weight:200;will-change:font-weight}
+#name .sp{width:.25em}
+.role{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:22px;font-size:22px;font-weight:500;border-top:2px solid currentColor;padding-top:14px}
+/* about */
+#about{background:none;padding:16vh 0}
+.card{max-width:900px;margin:0 auto;border:2.5px solid currentColor;border-radius:28px;padding:clamp(20px,3vw,34px);background:rgba(255,255,255,.08);background:color-mix(in srgb,currentColor 5%,transparent);display:flex;flex-direction:column;gap:22px}
+.cardhead{display:flex;align-items:center;gap:14px}.tag{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border:2px solid currentColor;border-radius:99px;padding:4px 14px}.cardhead .line{flex:1;height:2px;background:currentColor;opacity:.35}
+.blk h3{margin:0 0 6px;font-size:15px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+.blk p{margin:0}
+#story{font-size:clamp(19px,2vw,23px);line-height:1.38;font-weight:600;letter-spacing:-.01em}
+#story span{opacity:.22;transition:opacity .25s}#story span.on{opacity:1}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.cols .blk{border:2px solid currentColor;border-radius:20px;padding:16px 18px;background:rgba(255,255,255,.05)}
+.more{font-size:15.5px;line-height:1.5;max-width:none}
+@media(max-width:760px){.cols{grid-template-columns:1fr}}
+.quote{font-size:clamp(17px,1.9vw,22px);font-weight:700;line-height:1.25;letter-spacing:-.01em;margin:0;padding-left:16px;border-left:4px solid currentColor;max-width:none}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;font-size:15px;line-height:1.3}
+.fact{border-top:3px solid currentColor;padding-top:10px}.fact b{display:block;font-size:40px;line-height:1;font-weight:800}
+h2{font-size:clamp(40px,9vw,110px);line-height:.9;margin:0;letter-spacing:-.03em;font-weight:800;font-variation-settings:'wdth' 80}
+/* experience */
+#exp{height:300vh}
+.pin{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:28px}
+.pin h2{padding:0 22px}
+#track{display:flex;gap:24px;padding:0 22px;will-change:transform}
+.job{flex:0 0 min(86vw,580px);max-height:calc(100svh - 230px);overflow-y:auto;background:var(--ink);color:var(--lemon);padding:24px;border-radius:28px;display:flex;flex-direction:column;gap:10px;transition:transform .3s}
+.job:hover{transform:rotate(-1.5deg) translateY(-6px)}
+.job small{font-size:17px;opacity:.75}.job h3{margin:0;font-size:30px;line-height:1.05;font-weight:700}
+.job ul{margin:6px 0 0;padding-left:20px}.job li{margin-bottom:5px;font-size:16.5px;line-height:1.35}.job.intro{flex-basis:min(72vw,380px);background:transparent;border:3px solid currentColor;color:inherit;justify-content:center}
+.pbar{margin:0 22px;height:6px;background:rgba(16,16,42,.2);border-radius:9px}.pbar{position:relative;cursor:pointer;touch-action:none;user-select:none}.pbar::after{content:"";position:absolute;inset:-16px 0}
+.pbar i{display:block;height:100%;width:0;background:var(--ink);border-radius:9px}
+#knob{position:absolute;top:50%;left:0;width:24px;height:24px;border-radius:50%;background:var(--ink);border:3px solid var(--lemon);transform:translate(-50%,-50%);cursor:grab;box-shadow:0 3px 0 rgba(0,0,0,.22);transition:transform .15s}
+.pbar:hover #knob,.pbar:focus-visible #knob{transform:translate(-50%,-50%) scale(1.15)}.pbar.drag,.pbar.drag #knob{cursor:grabbing}.pbar.drag #knob{transform:translate(-50%,-50%) scale(1.25)}
+/* skills */
+#skills{padding:16vh 0}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 18px}
+.f{border:2.5px solid var(--ink);background:none;padding:8px 18px;border-radius:99px;font-weight:600}
+.f[aria-pressed="true"]{background:var(--ink);color:var(--mint)}
+#field{isolation:isolate;position:relative;height:520px;border:2.5px dashed var(--ink);border-radius:30px;overflow:hidden;touch-action:none}
+.chip{position:absolute;padding:9px 16px;border-radius:99px;font-weight:700;font-size:17px;background:var(--ink);color:var(--mint);cursor:grab;user-select:none;touch-action:none;transition:opacity .3s,filter .3s;box-shadow:0 6px 0 rgba(0,0,0,.25)}
+.chip.m{background:var(--blue);color:var(--lemon)}.chip.d{background:var(--tang);color:var(--ink)}.chip.a{background:var(--lemon);color:var(--ink)}.chip.b{background:var(--pink);color:var(--ink)}
+.chip:active{cursor:grabbing;transform:scale(1.08)}.chip.dim{opacity:.18;filter:grayscale(1)}
+.hint{margin:10px 0 0;opacity:.75;font-size:17px}
+/* certs */
+#certs{padding:16vh 0;overflow:hidden}
+#deck{position:relative;height:340px;max-width:460px;margin:50px auto 24px}
+.cert{position:absolute;inset:0;background:var(--ink);color:var(--pink);border-radius:26px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;border:0;transition:transform .55s cubic-bezier(.3,1.4,.5,1),opacity .4s;box-shadow:0 14px 0 rgba(0,0,0,.18)}
+.cert b{font-size:30px;line-height:1.05;font-weight:700}.cert em{font-style:normal;opacity:.8}.cert .no{font-size:70px;font-weight:800;line-height:.8;opacity:.9}
+.dk{text-align:center}.btn{border:2.5px solid var(--ink);background:none;border-radius:99px;padding:10px 24px;font-weight:700;font-size:18px}.btn:hover{background:var(--ink);color:var(--pink)}
+/* contact */
+#contact{padding:20vh 0 12vh;text-align:center}
+#mail{display:inline-block;font-size:clamp(17px,2.2vw,22px);font-weight:700;text-decoration:none;padding:.55em 1.3em;border:2.5px solid currentColor;border-radius:99px;transition:transform .15s;will-change:transform}
+#mail:hover{background:var(--lemon);color:var(--ink)}
+#toast{position:fixed;left:50%;bottom:calc(28px + env(safe-area-inset-bottom,0px));transform:translate(-50%,16px);background:var(--ink);color:var(--lemon);padding:11px 22px;border-radius:99px;font-weight:700;font-size:17px;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:60;box-shadow:0 8px 24px rgba(0,0,0,.3)}#toast.show{opacity:1;transform:translate(-50%,0)}
+.credit{margin-top:14vh;font-size:15px;font-weight:600;letter-spacing:.02em;opacity:.75}
+.links{display:flex;gap:22px;justify-content:center;margin-top:26px;font-size:22px;font-weight:600}
+#hero{isolation:isolate;overflow:hidden}
+#hero::before,#hero::after{content:"";position:absolute;z-index:-1;border-radius:50%;pointer-events:none}
+#hero::before{width:46vmax;height:46vmax;right:-12vmax;top:-10vmax;background:radial-gradient(circle,rgba(241,230,196,.17),transparent 65%);animation:d1 18s ease-in-out infinite alternate}
+#hero::after{width:40vmax;height:40vmax;left:-14vmax;bottom:6vh;background:radial-gradient(circle,rgba(217,184,201,.2),transparent 65%);animation:d2 22s ease-in-out infinite alternate}
+@keyframes d1{to{transform:translate(-8vmax,8vmax) scale(1.15)}}@keyframes d2{to{transform:translate(10vmax,-6vmax) scale(.9)}}
+.rv{opacity:0;transform:translateY(36px);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1)}.rv.in{opacity:1;transform:none}
+:root{--cw:clamp(96px,10vw,140px)}
+#nest{position:fixed;right:22px;bottom:calc(10px + env(safe-area-inset-bottom,0px));width:calc(var(--cw)*1.9);z-index:48;pointer-events:none;filter:drop-shadow(0 7px 8px rgba(10,14,40,.3))}
+#nest svg{display:block;width:100%;height:auto}
+#cat{position:fixed;right:calc(22px + var(--cw)*.45);bottom:calc(10px + var(--cw)*.32 + env(safe-area-inset-bottom,0px));width:var(--cw);z-index:49;pointer-events:none;opacity:0;filter:drop-shadow(0 0 1.5px rgba(255,255,255,.45))}
+#cat.here{opacity:1}
+#cat svg{display:block;overflow:visible}
+#mouse{position:fixed;left:0;top:0;width:46px;z-index:49;pointer-events:none;display:none;filter:drop-shadow(0 0 2px rgba(255,255,255,.55))}
+#mouse svg{display:block}
+.bd{transform-origin:82px 93px}
+.ft{opacity:0}#cat.walk .ft,#cat.run .ft{opacity:1}
+#cat.walk .bd{animation:wbob .44s ease-in-out infinite}
+#cat.run .bd{animation:rbob .24s ease-in-out infinite}
+@keyframes wbob{0%,100%{transform:translateY(0) rotate(-2.5deg)}50%{transform:translateY(-4px) rotate(2.5deg)}}
+@keyframes rbob{0%,100%{transform:translateY(0) rotate(-9deg) scale(1.06,.94)}50%{transform:translateY(-10px) rotate(-4deg) scale(.96,1.05)}}
+#cat.plop .bd{animation:plop .55s ease-out}
+#cat.stretch .bd{animation:stre 2.3s ease-in-out}
+@keyframes stre{0%{transform:none}18%{transform:scale(.94,1.1)}42%,70%{transform:scale(1.22,.76) translateY(2px)}86%{transform:scale(.97,1.04)}100%{transform:none}}
+#cat.stretch .tl{animation:tup 2.3s ease-in-out}
+@keyframes tup{0%,100%{transform:rotate(-4deg)}42%,70%{transform:rotate(-30deg)}}
+#cat.stretch .eye{animation:none;transform:scaleY(.12);transition:transform .25s}
+#cat.scratch .bd{animation:rock .5s ease-in-out infinite;transform-origin:82px 93px}
+@keyframes rock{0%,100%{transform:translateY(0) rotate(-1.8deg) scale(1.03,.97)}50%{transform:translateY(1px) rotate(1.8deg) scale(1.03,.96)}}
+#cat.scratch .ft{opacity:1}
+#cat.scratch .f1,#cat.scratch .f2{animation:knead .5s ease-in-out infinite}#cat.scratch .f2{animation-delay:-.25s}
+@keyframes knead{0%,100%{transform:translate(0,0) scale(1,1)}50%{transform:translate(0,-9px) scale(1.12,1.2)}}
+#cat.scratch .eye{animation:none;transform:scaleY(.4)}
+#cat.sleep .bd{animation:settle .7s ease-out forwards,breathe 3.2s ease-in-out .7s infinite}
+@keyframes settle{0%{transform:none}100%{transform:scale(1.12,.84)}}
+@keyframes breathe{0%,100%{transform:scale(1.12,.84)}50%{transform:scale(1.12,.89)}}
+#cat.sleep .eye{animation:none;transform:scaleY(.1)}
+#cat.scratch .tl,#cat.sleep .tl{animation-duration:5s}
+.zz{display:none;position:absolute;right:2%;top:0;font-weight:800;font-size:20px;line-height:1;color:#ece6cf;text-shadow:0 1px 3px rgba(10,14,40,.55);pointer-events:none}
+#cat.sleep .zz{display:block}
+.zz span{position:absolute;left:0;top:0;opacity:0;animation:zf 3s ease-out infinite}
+.zz span:nth-child(2){font-size:1.3em;animation-delay:1s}.zz span:nth-child(3){font-size:1.65em;animation-delay:2s}
+@keyframes zf{0%{opacity:0;transform:translate(0,0) scale(.6) rotate(0)}20%{opacity:1}100%{opacity:0;transform:translate(26px,-58px) scale(1.15) rotate(14deg)}}
+#bowl{position:absolute;right:7%;bottom:10px;width:clamp(112px,16vw,150px);z-index:-2;pointer-events:none;transform-origin:50% 100%}
+#bowl svg{display:block;width:100%;overflow:visible}
+.kib{position:absolute;left:0;top:0;width:13px;height:9px;border-radius:55% 45% 50% 50%;background:#b27244;box-shadow:inset -2px -2px 0 rgba(0,0,0,.25);z-index:-1;pointer-events:none;will-change:transform}
+#cat.eat .bd{animation:chew .7s ease-in-out infinite}
+@keyframes chew{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(-22deg) translate(-3px,3px) scale(1.03,.94)}}
+#cat.eat .eye,#cat.happy .eye{animation:none;transform:scaleY(.32)}
+#cat.eat .tl{animation-duration:.45s}
+#cat.cheer .bd{animation:hop .48s ease-out 3}
+@keyframes hop{0%,100%{transform:none}40%{transform:translateY(-14px) scale(.96,1.06)}70%{transform:scale(1.05,.94)}}
+.hh{display:none;position:absolute;left:10%;top:0;font-size:20px;line-height:1;color:#f2a8c4;pointer-events:none}
+#cat.happy .hh{display:block}
+.hh span{position:absolute;left:0;top:0;opacity:0;animation:hf 1.8s ease-out infinite}
+.hh span:nth-child(2){animation-delay:.6s;left:34px}.hh span:nth-child(3){animation-delay:1.2s;left:62px}
+@keyframes hf{0%{opacity:0;transform:translateY(0) scale(.6)}25%{opacity:1}100%{opacity:0;transform:translateY(-44px) scale(1.1)}}
+#mail.boing{animation:boing .75s cubic-bezier(.3,1.4,.5,1)}
+@keyframes boing{0%{transform:none}18%{transform:translateY(-30px) scale(.94,1.1)}38%{transform:translateY(0) scale(1.14,.82)}58%{transform:translateY(-13px) scale(.98,1.04)}78%{transform:translateY(0) scale(1.06,.93)}100%{transform:none}}
+#cat.scared .eye{animation:none;transform:scale(1.28)}
+#cat.scared .bd{animation:shake .1s linear infinite}
+@keyframes shake{0%,100%{transform:translateX(-1.2px)}50%{transform:translateX(1.2px)}}
+.cw{opacity:0}#cat.leap .cw,#cat.cling .cw,#cat.leap .ft,#cat.cling .ft{opacity:1}
+#cat.leap .bd{animation:none;transform:scale(.9,1.2)}
+#cat.cling .bd{animation:clw .45s ease-in-out infinite}
+@keyframes clw{0%,100%{transform:scale(.92,1.13) rotate(-2.5deg)}50%{transform:scale(.92,1.13) rotate(2.5deg)}}
+@keyframes plop{0%{transform:scale(1.1,.84)}45%{transform:scale(.96,1.06)}100%{transform:none}}
+.f1,.f2{animation:fs .44s ease-in-out infinite}.f2{animation-delay:-.22s}
+#cat.run .f1,#cat.run .f2{animation-duration:.24s}#cat.run .f2{animation-delay:-.12s}
+@keyframes fs{0%,100%{transform:translateX(-7px)}50%{transform:translateX(7px) translateY(-3px)}}
+.tl{transform-origin:46px 72px;animation:wag 2.6s ease-in-out infinite}#cat.run .tl{animation-duration:.24s}
+@keyframes wag{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(9deg)}}
+.eye{transform-box:fill-box;transform-origin:center;animation:blink 4.6s infinite}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}#mail.boing,.zz span,.hh span,.tl,.eye,.bd,.f1,.f2,#cat.stretch .bd,#cat.stretch .tl,#hero::before,#hero::after{animation:none}.rv{opacity:1;transform:none}*{transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+<div id="nest" aria-hidden="true"><svg viewBox="0 0 200 66"><path d="M4 40C28 16 72 10 100 10C128 10 172 16 196 40C190 52 150 62 100 62C50 62 10 52 4 40Z" fill="#dce9fb" stroke="#6f86ad" stroke-width="1.2" stroke-linejoin="round"/><path d="M10 44C50 52 150 52 190 44C184 53 148 62 100 62C52 62 16 53 10 44Z" fill="#c3d5ef"/><path d="M10 44C50 52 150 52 190 44" fill="none" stroke="#8aa1c8" stroke-width="1.1"/><path d="M26 30L40 26M46 24L58 21M144 21L158 24M162 26L174 30M30 38L48 41M152 41L170 38" stroke="#b4c8e6" stroke-width="1.2" stroke-linecap="round" fill="none"/><ellipse cx="100" cy="27" rx="40" ry="4.5" fill="rgba(80,100,150,.22)"/></svg></div>
+<div id="cat" aria-hidden="true"><svg viewBox="0 0 140 100" width="100%"><ellipse cx="82" cy="94" rx="46" ry="3.2" fill="rgba(70,90,140,.35)"/><g class="bd"><g id="tw"><g class="tl"><path d="M46 66C36 58 21 60 16 68C12 76 18 85 31 86C43 87 51 83 53 77Z" fill="#050508"/></g></g><g class="cw"><path d="M47 60C38 52 33 42 32 31M117 60C126 52 131 42 132 31" fill="none" stroke="#050508" stroke-width="9" stroke-linecap="round"/><ellipse cx="32" cy="28" rx="8" ry="7" fill="#050508"/><ellipse cx="132" cy="28" rx="8" ry="7" fill="#050508"/><path d="M27 22l-3-7M32 20.5v-8M37 22l3-7M127 22l-3-7M132 20.5v-8M137 22l3-7" stroke="#f1e6c4" stroke-width="1.6" stroke-linecap="round" fill="none"/></g><ellipse class="ft f1" cx="60" cy="93" rx="10" ry="5.5" fill="#050508"/><ellipse class="ft f2" cx="104" cy="93" rx="10" ry="5.5" fill="#050508"/><path d="M38 52C38 38 44 26 50 15L56 10C60 10 66 15 70 17C80 15.5 90 15.5 100 17C104 14 108 12 112 10C117 20 125 34 128 52C131 68 129 82 119 88C104 94 62 94 47 88C37 84 35 70 38 52Z" fill="#050508"/><g id="face"><g class="eye"><circle cx="59.5" cy="50" r="13.5" fill="#fff"/><circle class="pu" cx="59.5" cy="50" r="10.6" fill="#050508"/></g><g class="eye"><circle cx="104.5" cy="50" r="13.5" fill="#fff"/><circle class="pu" cx="104.5" cy="50" r="10.6" fill="#050508"/></g><ellipse cx="82" cy="66" rx="2.6" ry="3.5" fill="#fff"/></g></g></svg><div class="zz" aria-hidden="true"><span>Z</span><span>Z</span><span>Z</span></div><div class="hh" aria-hidden="true"><span>♥</span><span>♥</span><span>♥</span></div></div>
+<div id="mouse" aria-hidden="true"><svg viewBox="0 0 60 34" width="100%"><path d="M50 24C58 26 59 14 55 9" fill="none" stroke="#0d0d14" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="34" cy="22" rx="17" ry="10" fill="#0d0d14"/><ellipse cx="15" cy="23" rx="10" ry="8" fill="#0d0d14"/><circle cx="14" cy="14" r="6" fill="#0d0d14"/><circle cx="25" cy="14" r="6" fill="#0d0d14"/><circle cx="14" cy="14" r="3" fill="#f4a6b8"/><circle cx="25" cy="14" r="3" fill="#f4a6b8"/><circle cx="7" cy="24" r="1.8" fill="#f4a6b8"/><circle cx="14" cy="21" r="1.7" fill="#fff"/></svg></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<header><a href="#hero">Svitlana Sobkiv</a><nav><a href="#about">About</a><a href="#exp">Experience</a><a href="#skills">Skills</a><a href="#certs">Certificates</a><a href="#contact">Contact</a></nav></header>
+
+<section id="hero" data-bg="#5a4a8c">
+  <h1 id="name" aria-label="Svitlana Sobkiv">SVITLANA SOBKIV</h1>
+  <div class="role"><span>Digital Project Manager</span><span>Move your cursor over the name. Then scroll.</span></div>
+</section>
+
+<section id="about" data-bg="#ecdcb4">
+  <div class="wrap">
+    <div class="card">
+      <div class="cardhead"><span class="tag">About me</span><span class="line"></span></div>
+      <div class="blk lead"><h3>Who I am</h3><p id="story">I’m a Creative-minded Digital Project Manager who enjoys turning ideas into digital experiences that actually get built. With 3+ years of experience in IT and AI project management, I work at the intersection of technology, creativity and people - turning business ideas and requirements into clear plans, coordinating designers and developers, managing priorities and dependencies, solving problems, and keeping projects moving from concept to delivery.</p></div>
+      <div class="cols">
+        <div class="blk"><h3>How I work</h3><p class="more">I’m comfortable working across the digital product lifecycle, with experience in Agile/Scrum, UX/UI, frontend and backend workflows, QA, stakeholder communication and project coordination. I enjoy bringing structure to complex projects without losing sight of the creative idea behind them.</p></div>
+        <div class="blk"><h3>Creative side</h3><p class="more">My creative background adds another dimension to my PM approach. I have experience and a strong interest in 3D visualization, visual design, animation and game development, which helps me understand creative workflows and communicate effectively with designers, artists and developers. I’m especially interested in digital experiences, websites, creative campaigns, interactive products, AI-powered solutions and game development - projects where technology and creativity come together.</p></div>
+      </div>
+      <p class="quote">Great project management isn’t just about tracking tasks. It’s about creating the environment where good ideas can become great products.</p>
+      <div class="facts">
+        <div class="fact"><b data-n="3" data-s="+">0</b>years in IT &amp; AI project management</div>
+        <div class="fact"><b data-n="2">0</b>roles at TELUS Digital</div>
+        <div class="fact"><b data-n="3">0</b>certificates earned</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="exp" data-bg="#dc8f78">
+  <div class="pin">
+    <h2>Experience</h2>
+    <div id="track"></div>
+    <div class="pbar" id="pbar" role="slider" tabindex="0" aria-label="Move through experience" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="pb"></i><b id="knob"></b></div>
+  </div>
+</section>
+
+<section id="skills" data-bg="#72b8a6">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <div class="filters" id="filters"></div>
+    <div id="field"><div id="bowl" aria-hidden="true"><svg viewBox="0 0 150 84"><ellipse cx="75" cy="79" rx="52" ry="5" fill="rgba(30,25,60,.25)"/><path d="M16 28C16 62 40 78 75 78C110 78 134 62 134 28Z" fill="#e3b5d0" stroke="#2a2347" stroke-width="2" stroke-linejoin="round"/><g fill="#f1e6c4"><path d="M55 61q11-9 23 0q-12 9-23 0Z"/><path d="M77 61l9-6v12Z"/></g><circle cx="61" cy="60" r="1.4" fill="#2a2347"/><ellipse cx="75" cy="27" rx="59" ry="14" fill="#f1e6c4" stroke="#2a2347" stroke-width="2"/><ellipse cx="75" cy="27" rx="52" ry="10.5" fill="#4a3558"/><path id="mound" d="" fill="#a86a3e" stroke="#7a4824" stroke-width="1.2" stroke-linejoin="round"/><g id="dots"></g></svg></div></div>
+    <p class="hint">Drag the skills around. Use the filters to light up one group. Move a skill to shake out cat food and fill the bowl.</p>
+  </div>
+</section>
+
+<section id="certs" data-bg="#ac92cc">
+  <div class="wrap dk">
+    <h2>Certificates</h2>
+    <div id="deck"></div>
+    <button class="btn" id="shuf">Next certificate</button>
+  </div>
+</section>
+
+<section id="contact" data-bg="#38356a">
+  <div class="wrap">
+    <a id="mail" href="mailto:svitlana.sobkiv@gmail.com">svitlana.sobkiv@gmail.com</a>
+    <div class="links"><a href="https://www.linkedin.com/in/svitlana-sobkiv/" target="_blank" rel="noopener">LinkedIn</a><a href="#hero">Back to top</a></div>
+    <footer class="credit">Concept, Design &amp; Development by Svitlana Sobkiv</footer>
+  </div>
+</section>
+
+<script>
+/* ===== EDIT YOUR CONTENT HERE ===== */
+const NAME="SVITLANA SOBKIV";
+const JOBS=[
+ {d:"07/2026 - Present",t:"7eminar &amp; Kadroland Platforms",c:"",b:["Manage the end-to-end delivery of digital projects, including website improvements, AI-powered features, and chatbot integrations.","Coordinate developers, designers, AI specialists, and stakeholders to translate business and marketing goals into product requirements, tasks, and deliverables.","Plan project timelines, prioritize tasks, track progress, manage dependencies, and ensure timely delivery of features and improvements.","Collaborate on UI/UX design and user journeys to improve website usability, customer experience, and engagement with digital products.","Participate in AI chatbot development and testing, evaluating response quality, relevance, and functionality to improve the user experience.","Test web platform features and AI integrations, identify bugs, coordinate fixes, and validate solutions before release.","Support the development of digital content and interactive learning experiences, aligning platform functionality with audience needs and business objectives.","Use AI tools to streamline workflows, support content and product development, and improve team efficiency.","Maintain project documentation, communicate updates to stakeholders, and coordinate feedback throughout the development lifecycle."]},
+ {d:"09/2023 - 03/2026",t:"Project Manager",c:"TELUS International (TELUS Digital), Canada",b:["Coordinated IT, AI, and data-related projects, aligning client expectations, business requirements, and technical team deliverables.","Communicated with international stakeholders to clarify requirements, confirm priorities, resolve issues, and provide project status updates.","Translated business needs into actionable tasks, documented requirements, and tracked progress, dependencies, blockers, and deadlines.","Supported project planning, sprint planning, workload coordination, and milestone tracking to keep delivery on schedule.","Collaborated with cross-functional teams to resolve workflow issues, manage changing priorities, and maintain alignment on project objectives.","Maintained project documentation, status reports, action items, and task tracking in Jira and ClickUp.","Coordinated quality assurance and follow-up activities, helping ensure deliverables met agreed requirements.","Identified delivery risks and potential blockers, communicated issues to relevant stakeholders, and supported timely resolution.","Contributed to process improvements and more structured project tracking and reporting."]},
+ {d:"08/2022 - 09/2023",t:"Junior Project Coordinator",c:"TELUS International (TELUS Digital), Canada",b:["Supported day-to-day project coordination, including task tracking, follow-ups, meetings, and deadlines.","Maintained Jira and ClickUp boards, tracking tasks, priorities, dependencies, and project progress.","Supported Scrum ceremonies, including daily stand-ups, sprint planning, and backlog refinement.","Prepared and maintained project documentation, technical requirements, meeting notes, and status updates.","Assisted with stakeholder communication and coordinated follow-ups with project team members.","Monitored project risks, blockers, and dependencies and escalated issues when needed.","Supported project planning and team coordination."]}
+ 
+];
+const SK={"Project Management":["Jira","ClickUp","Notion"],"Collaboration & Reporting":["Google Workspace","Microsoft Excel"],"Design & Product":["Figma"],"AI Tools":["ChatGPT","Claude","Gemini"],"Technical Knowledge":["SDLC","UI/UX","Frontend & backend workflows","Software testing & QA coordination","AI/data project workflows","GitHub"]};
+const CERTS=[["Diploma in Modern Project Management","Alison · Oct 2026"],["Project Management Foundations","Project Management Institute · Mar 2024"],["English Language Progression: Business English","UK College of Business and Computing Ltd · Jul 2020"]];
+/* =================================== */
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+// name
+const nm=$('#name');nm.innerHTML=[...NAME].map(c=>c==' '?'<span class="sp"></span>':`<span aria-hidden="true">${c}</span>`).join('');
+const L=$$('#name span:not(.sp)');let px=-999,py=-999,last=0;
+addEventListener('pointermove',e=>{px=e.clientX;py=e.clientY;last=performance.now()});
+function tick(t){L.forEach((s,i)=>{const r=s.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;let w;
+ if(t-last<1800){const d=Math.hypot(px-cx,py-cy);w=200+600*Math.max(0,1-d/300)}else w=rm?300:200+300*(.5+.5*Math.sin(t/700+i*.7));
+ s.style.fontWeight=Math.round(w)});requestAnimationFrame(tick)}requestAnimationFrame(tick);
+// story words
+const st=$('#story');st.innerHTML=st.textContent.split(' ').map(w=>`<span>${w}</span>`).join(' ');const W=$$('#story span');
+// jobs
+$('#track').innerHTML='<article class="job intro"><small>Professional experience</small><h3>TELUS Digital, Canada<br>7eminar &amp; Kadroland</h3><small>08/2022 - Present &middot; keep scrolling &rarr;</small></article>'+JOBS.map(j=>`<article class="job"><small>${j.d}${j.c?' &middot; '+j.c:''}</small><h3>${j.t}</h3><ul>${j.b.map(x=>`<li>${x}</li>`).join('')}</ul></article>`).join('');
+// skills
+const field=$('#field'),fl=$('#filters'),cls={"Project Management":'',"Collaboration & Reporting":'m',"Design & Product":'d',"AI Tools":'a',"Technical Knowledge":'b'};let z=1;
+['All',...Object.keys(SK)].forEach((k,i)=>{const b=document.createElement('button');b.className='f';b.textContent=k;b.setAttribute('aria-pressed',i==0);b.onclick=()=>{$$('.f').forEach(x=>x.setAttribute('aria-pressed',x==b));$$('.chip').forEach(c=>c.classList.toggle('dim',k!='All'&&c.dataset.g!=k))};fl.append(b)});
+function place(){const fw=field.clientWidth;let x=14,y=14,rowH=0;$$('.chip').forEach(c=>{if(c.dataset.moved)return;const w=c.offsetWidth;if(x+w>fw-14){x=14;y+=rowH+16;rowH=0}c.style.left=x+'px';c.style.top=y+'px';x+=w+14;rowH=Math.max(rowH,c.offsetHeight)})}
+Object.entries(SK).forEach(([g,a])=>a.forEach(n=>{const c=document.createElement('div');c.className='chip '+cls[g];c.textContent=n;c.dataset.g=g;field.append(c);
+ c.onpointerdown=e=>{c.setPointerCapture(e.pointerId);c.dataset.moved=1;c.style.zIndex=++z;const ox=e.clientX-c.offsetLeft,oy=e.clientY-c.offsetTop,sx=e.clientX,sy=e.clientY;c._d=0;
+  c.onpointermove=m=>{if(!c._d&&Math.hypot(m.clientX-sx,m.clientY-sy)>5){c._d=1;feed(c)}c.style.left=Math.max(0,Math.min(field.clientWidth-c.offsetWidth,m.clientX-ox))+'px';c.style.top=Math.max(0,Math.min(field.clientHeight-c.offsetHeight,m.clientY-oy))+'px'};
+  c.onpointerup=()=>{c.onpointermove=null}}}));
+document.fonts.ready.then(place);addEventListener('resize',place);place();
+// certs
+const deck=$('#deck');CERTS.forEach((c,i)=>{const b=document.createElement('button');b.className='cert';b.innerHTML=`<span class="no">${i+1}</span><span><b>${c[0]}</b><br><em>${c[1]}</em></span>`;b.onclick=next;deck.append(b)});
+let order=CERTS.map((_,i)=>i);const cards=$$('.cert');
+function lay(){order.forEach((ci,p)=>{const c=cards[ci];c.style.zIndex=10-p;c.style.transform=`translate(${p*14}px,${p*-12}px) rotate(${[0,4,-5,7][p%4]}deg) scale(${1-p*.04})`;c.style.opacity=p>3?0:1;c.tabIndex=p?-1:0})}
+function next(){order.push(order.shift());lay()}$('#shuf').onclick=next;lay();
+// contact
+if(!rm){const m=$('#mail');m.parentElement.onpointermove=e=>{const r=m.getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2);if(Math.hypot(dx,dy)<320)m.style.transform=`translate(${dx*.12}px,${dy*.18}px)`;else m.style.transform=''}}
+// copy email
+const toast=$('#toast');let tt=0;
+function say(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('show'),2200)}
+$('#mail').addEventListener('click',async e=>{e.preventDefault();e.stopPropagation();const t=e.currentTarget.textContent.trim();let ok=false;
+ try{await navigator.clipboard.writeText(t);ok=true}catch(_){try{const a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';document.body.append(a);a.select();ok=document.execCommand('copy');a.remove()}catch(_){}}
+ say(ok?'Email copied!':'Could not copy - '+t);spook()});
+// counters
+let counted=0;function count(){$$('.fact b').forEach(b=>{const n=+b.dataset.n;let i=0;const id=setInterval(()=>{i++;b.textContent=Math.round(n*i/30)+(b.dataset.s||'');if(i>=30)clearInterval(id)},30)})}
+// scroll
+const track=$('#track'),ex=$('#exp');function setH(){const tr=Math.max(0,track.scrollWidth-innerWidth);ex.style.height=(innerHeight+Math.max(tr*1.2,innerHeight*.8))+'px'}setH();addEventListener('resize',setH);
+const SEC=$$('section'),hx=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)),mix=(a,b,t)=>a.map((v,i)=>Math.round(v+(b[i]-v)*t)),rgb=a=>`rgb(${a})`,COL=SEC.map(s=>hx(s.dataset.bg)),LT=hx('#ece6cf'),DK=hx('#2a2347');
+function paint(){const mid=scrollY+innerHeight/2,Z=innerHeight*.8;let i=SEC.findIndex(s=>mid<s.offsetTop+s.offsetHeight);if(i<0)i=SEC.length-1;const s=SEC[i],top=s.offsetTop,bot=top+s.offsetHeight,n=SEC.length;let a=COL[i],b=COL[i],t=0;
+ if(i<n-1&&bot-mid<Z){b=COL[i+1];t=.5*(1-(bot-mid)/Z)}else if(i>0&&mid-top<Z){a=COL[i-1];t=.5+.5*((mid-top)/Z)}
+ const bg=mix(a,b,t),nx=COL[Math.min(i+1,n-1)],lum=(.299*bg[0]+.587*bg[1]+.114*bg[2])/255,k=Math.max(0,Math.min(1,(lum-.47)/.04));
+ document.documentElement.style.setProperty('--hbg',rgb(bg));document.body.style.backgroundImage=`linear-gradient(165deg,${rgb(bg)},${rgb(mix(bg,nx,.4))})`;document.body.style.backgroundColor=rgb(bg);document.body.style.color=rgb(mix(LT,DK,k))}
+function onScroll(){const vh=innerHeight;let cur=null;$$('section').forEach(s=>{const r=s.getBoundingClientRect();if(r.top<vh*.5&&r.bottom>vh*.5)cur=s});
+ paint();
+ const a=$('#about').getBoundingClientRect(),sp=Math.max(0,Math.min(1,(vh*.85-st.getBoundingClientRect().top)/(vh*.6)));W.forEach((w,i)=>w.classList.toggle('on',i/W.length<sp));
+ if(!counted&&a.top<vh*.5){counted=1;count()}
+ const r=ex.getBoundingClientRect(),p=Math.max(0,Math.min(1,-r.top/(ex.offsetHeight-vh)));
+ track.style.transform=`translateX(${-p*Math.max(0,track.scrollWidth-innerWidth)}px)`;$('#pb').style.width=p*100+'%';$('#knob').style.left=p*100+'%';$('#pbar').setAttribute('aria-valuenow',Math.round(p*100))}
+addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
+// drag / click the progress line to move through the experience cards
+const pbar=$('#pbar');let drag=false;
+function toP(p){p=Math.max(0,Math.min(1,p));scrollTo({top:ex.getBoundingClientRect().top+scrollY+p*(ex.offsetHeight-innerHeight),behavior:'instant'})}
+function fromX(x){const r=pbar.getBoundingClientRect();toP((x-r.left)/r.width)}
+pbar.addEventListener('pointerdown',e=>{drag=true;pbar.setPointerCapture(e.pointerId);pbar.classList.add('drag');fromX(e.clientX);e.preventDefault()});
+pbar.addEventListener('pointermove',e=>{if(drag)fromX(e.clientX)});
+['pointerup','pointercancel'].forEach(t=>pbar.addEventListener(t,()=>{drag=false;pbar.classList.remove('drag')}));
+pbar.addEventListener('click',e=>e.stopPropagation());
+pbar.addEventListener('keydown',e=>{const c=parseFloat($('#pb').style.width)/100||0;if(e.key=='ArrowRight'||e.key=='ArrowDown'){toP(c+.08);e.preventDefault()}else if(e.key=='ArrowLeft'||e.key=='ArrowUp'){toP(c-.08);e.preventDefault()}});
+// reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+$$('h2,.more,.quote,.fact,.filters,#field,#deck,#shuf,#contact .wrap>p,.links').forEach(e=>{e.classList.add('rv');io.observe(e)});$$('.fact').forEach((f,i)=>f.style.transitionDelay=i*.12+'s');
+// cat + pillow + mouse
+const cat=$('#cat'),mouse=$('#mouse'),face=$('#face'),tw=$('#tw'),ps=$$('#cat .pu');let busy=true,seated=false,started=false,idle=0,asleep=false,mx=innerWidth/2,my=innerHeight/2;
+function tail(m){tw.setAttribute('transform',m?'translate(164 0) scale(-1 1)':'')}
+function look(x,y){const r=cat.getBoundingClientRect(),cx=r.left+r.width*.586,cy=r.top+r.height*.5,dx=x-cx,dy=y-cy,d=Math.hypot(dx,dy)||1,m=Math.min(1,d/160);
+ ps.forEach(p=>p.setAttribute('transform',`translate(${dx/d*m*2.4} ${dy/d*m*2.4})`));
+ const hx=Math.max(-1,Math.min(1,dx/400)),hy=Math.max(-1,Math.min(1,dy/400));face.setAttribute('transform',`translate(${hx*3} ${hy*2})`)}
+look(mx,my);
+addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;if(!busy)look(mx,my)});
+// the cat walks from off-screen (fx = start offset in px) to the pillow, hops up and sits
+function arrive(fx,dur){cat.style.transform='';const r=cat.getBoundingClientRect(),drop=Math.max(0,Math.round(innerHeight-8-r.bottom));
+ busy=true;tail(fx>0);cat.classList.remove('run');cat.classList.add('here','walk');const t0=performance.now();
+ (function f(now){const p=Math.min(1,(now-t0)/dur),hp=Math.max(0,(p-.85)/.15),x=fx*(1-p),y=drop*(1-hp)-30*Math.sin(Math.PI*hp);
+  cat.style.transform=`translate(${x}px,${y}px)`;look(r.left+x+(fx<0?500:-500),r.top+r.height*.5);
+  if(p<1){requestAnimationFrame(f);return}
+  cat.style.transform='';tail(false);cat.classList.remove('walk');cat.classList.add('plop');look(mx,my);
+  setTimeout(()=>{cat.classList.remove('plop');cat.classList.add('stretch');setTimeout(()=>{cat.classList.remove('stretch');busy=false;seated=true;look(mx,my);armIdle()},2300)},600)})(t0)}
+function start(){if(started)return;started=true;if(rm){cat.classList.add('here');busy=false;seated=true;look(mx,my);return}
+ const r=cat.getBoundingClientRect();arrive(-(r.left+r.width+24),3400)}
+addEventListener('scroll',()=>{if(scrollY>6)start()},{passive:true});if(scrollY>6||rm)start();
+function armIdle(){clearTimeout(idle);if(!rm)idle=setTimeout(sleep,15000)}
+function sleep(){if(!seated||busy||asleep)return;asleep=true;busy=true;seated=false;cat.classList.add('scratch');setTimeout(()=>{if(asleep){cat.classList.remove('scratch');cat.classList.add('sleep')}},2800)}
+function wake(){asleep=false;cat.classList.remove('scratch','sleep');cat.classList.add('plop');busy=false;seated=true;look(mx,my);setTimeout(()=>{cat.classList.remove('plop');chase()},550)}
+function endChase(){mouse.style.display='none';cat.classList.remove('run','here');cat.style.transform='';
+ setTimeout(()=>{const r=cat.getBoundingClientRect();arrive(Math.round(innerWidth+24-r.left),1700)},6000)}
+function chase(){if(busy||rm||!seated)return;clearTimeout(idle);busy=true;seated=false;
+ const vw=innerWidth,cr=cat.getBoundingClientRect(),mw=46,mh=mw*34/60,floor=innerHeight-8,gy=floor-mh,drop=Math.max(0,floor-cr.bottom),x0=vw*(.2+.25*Math.random()),off=cr.right+30,t0=performance.now();mouse.style.display='block';
+ function f(now){const t=Math.max(0,now-t0);let x,y;
+  if(t<700){x=x0;y=-50+(gy+50)*(t/700)**2}else if(t<920){x=x0;y=gy-36*Math.sin(Math.PI*(t-700)/220)}else{x=x0-.45*(t-920);y=gy-5*Math.abs(Math.sin(t/55))}
+  mouse.style.transform=`translate(${x}px,${y}px)`;
+  const s=t-1150;let cx=0;
+  if(s>0){tail(true);cat.classList.add('run');cx=-.62*s;const q=Math.min(1,s/260),cyy=drop*q-24*Math.sin(Math.PI*q);cat.style.transform=`translate(${cx}px,${cyy}px)`;look(cr.left+cx-400,cr.top+cr.height*.5)}else look(x+mw/2,y+mh/2);
+  if(x<-70&&cx<-off){endChase();return}requestAnimationFrame(f)}
+ requestAnimationFrame(f)}
+// ===== cat food game =====
+const bowl=$('#bowl'),mound=$('#mound'),dots=$('#dots'),FULL=4;let bowlN=0,feeding=false,raf=0,lastT=0;const parts=[];
+function setMound(n){if(!n){mound.setAttribute('d','');dots.innerHTML='';return}
+ const w=20+n*8,h=n*5,ry=10.5*w/52;mound.setAttribute('d',`M${75-w} 27Q75 ${27-2*h} ${75+w} 27A${w} ${ry} 0 0 1 ${75-w} 27Z`);
+ let d='';for(let i=0;i<n*4;i++){const t=((i*.618)%1)*2-1,dx=t*.82*w,y=27-h*(1-(dx/w)**2)+(i%3)*1.6+1,X=(75+dx).toFixed(1),Y=y.toFixed(1);d+=`<ellipse cx="${X}" cy="${Y}" rx="4.4" ry="3" fill="${i%2?'#c58a57':'#94592f'}" transform="rotate(${(i*47)%90-45} ${X} ${Y})"/>`}
+ dots.innerHTML=d}
+// 5 pieces fall from a skill when you start moving it; 4 pieces in the bowl fill it
+function feed(chip){if(feeding||bowlN>=FULL)return;for(let i=0;i<5;i++)setTimeout(()=>drop(chip),700+i*300)}
+function drop(chip){if(feeding||bowlN>=FULL)return;const el=document.createElement('div');el.className='kib';field.append(el);
+ parts.push({el,x:chip.offsetLeft+chip.offsetWidth*(.15+.7*Math.random()),y:chip.offsetTop+chip.offsetHeight-2,vx:(Math.random()-.5)*50,vy:40,r:Math.random()*360,vr:(Math.random()-.5)*500});
+ if(!raf){lastT=performance.now();raf=requestAnimationFrame(loop)}}
+function loop(now){const dt=Math.min(.033,(now-lastT)/1000||.016);lastT=now;
+ const fw=field.clientWidth,fh=field.clientHeight,sc=bowl.offsetWidth/150,bx=bowl.offsetLeft,by=bowl.offsetTop,zl=bx+24*sc,zr=bx+126*sc,domeY=by+(27-bowlN*5)*sc;
+ for(const p of parts){if(p.dead)continue;
+  if(!p.rest){p.vy+=1900*dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.r+=p.vr*dt;
+   if(p.x<5){p.x=5;p.vx=Math.abs(p.vx)}else if(p.x>fw-5){p.x=fw-5;p.vx=-Math.abs(p.vx)}
+   if(!p.b){
+    if(p.x>zl&&p.x<zr&&p.y>=domeY){inBowl(p);continue}
+    if((p.x<=zl||p.x>=zr)&&p.x>bx+6*sc&&p.x<bx+144*sc&&p.y>=by+14*sc&&p.y<by+30*sc){p.b=1;p.vx=(p.x<bx+75*sc?-1:1)*(90+Math.random()*70);p.vy=-240}}
+   const fl=fh-12;if(p.y>=fl){p.y=fl;if(p.vy>260){p.vy*=-.32;p.vx*=.5}else{p.rest=true;p.vx=p.vy=0;settle(p)}}}
+  p.el.style.transform=`translate(${p.x-6.5}px,${p.y-4.5}px) rotate(${p.r}deg)`}
+ for(let i=parts.length-1;i>=0;i--)if(parts[i].dead)parts.splice(i,1);
+ raf=parts.some(p=>!p.rest)?requestAnimationFrame(loop):0}
+function settle(p){setTimeout(()=>{p.el.style.transition='opacity .6s';p.el.style.opacity=0;setTimeout(()=>{p.dead=1;p.el.remove();const i=parts.indexOf(p);if(i>-1)parts.splice(i,1)},650)},3000)}
+function inBowl(p){p.dead=1;p.el.remove();if(bowlN>=FULL)return;bowlN++;setMound(bowlN);bowl.animate([{transform:'none'},{transform:'scale(1.04,.95)'},{transform:'none'}],{duration:200});
+ if(bowlN>=FULL&&!feeding){feeding=true;setTimeout(startFeed,700)}}
+// the cat walks (x0,y0)->(x1,y1) in px offsets from the pillow seat
+function walkTo(x0,y0,x1,y1,dur,hopS,hopE,done){cat.classList.add('walk');tail(x1<x0);const t0=performance.now();
+ (function f(now){const p=Math.min(1,(now-t0)/dur);let x=x0+(x1-x0)*p,y=y0+(y1-y0)*p;
+  if(hopS&&p<.15)y-=26*Math.sin(Math.PI*p/.15);if(hopE&&p>.85)y-=30*Math.sin(Math.PI*(p-.85)/.15);
+  cat.style.transform=`translate(${x}px,${y}px)`;const r=cat.getBoundingClientRect();look(r.left+r.width/2+(x1<x0?-500:500),r.top+r.height/2);
+  if(p<1){requestAnimationFrame(f);return}cat.classList.remove('walk');done&&done()})(t0)}
+function startFeed(){
+ if(rm){setTimeout(()=>{bowlN=0;setMound(0);feeding=false},900);return}
+ if(asleep){asleep=false;cat.classList.remove('scratch','sleep');seated=true;busy=false}
+ if(!seated||busy){setTimeout(startFeed,400);return}
+ busy=true;seated=false;clearTimeout(idle);cat.classList.remove('stretch','plop','happy');
+ const b0=bowl.getBoundingClientRect();
+ if(b0.top<70||b0.bottom>innerHeight-10){bowl.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(go,800)}else go();
+ function go(){const br=bowl.getBoundingClientRect(),r=cat.getBoundingClientRect(),
+  tx=Math.min(innerWidth-r.width/2-8,br.left+br.width*.5+r.width*.6)-(r.left+r.width/2),ty=Math.min(innerHeight-8,br.bottom+4)-r.bottom,
+  dur=Math.max(1700,Math.min(3600,Math.hypot(tx,ty)/.24));
+  walkTo(0,0,tx,ty,dur,true,false,()=>eat(tx,ty,dur))}}
+function eat(tx,ty,dur){tail(true);cat.classList.add('eat');
+ setTimeout(()=>{const iv=setInterval(()=>{bowlN=Math.max(0,bowlN-1);setMound(bowlN);
+  if(bowlN<=0){clearInterval(iv);setTimeout(()=>{cat.classList.remove('eat');cat.classList.add('happy','cheer');
+   setTimeout(()=>{cat.classList.remove('cheer');home(tx,ty,dur)},1450)},500)}},760)},500)}
+function home(tx,ty,dur){walkTo(tx,ty,0,0,dur,false,true,()=>{cat.style.transform='';tail(false);cat.classList.add('plop');
+ setTimeout(()=>{cat.classList.remove('plop');busy=false;seated=true;feeding=false;look(mx,my);armIdle();setTimeout(()=>cat.classList.remove('happy'),1300)},600)})}
+// ===== email click: bounce -> cat wakes / gets scared -> leaps on the page, claws it and slides down =====
+let spooking=false;
+function scare(on){ps.forEach(p=>p.setAttribute('r',on?6.6:10.6))}
+function spook(){const m=$('#mail');m.classList.remove('boing');void m.offsetWidth;m.classList.add('boing');setTimeout(()=>m.classList.remove('boing'),800);
+ if(rm||spooking||!(asleep||(seated&&!busy)))return;
+ spooking=true;const wasAsleep=asleep;asleep=false;busy=true;seated=false;clearTimeout(idle);
+ setTimeout(()=>{cat.classList.remove('scratch','sleep','stretch','plop','happy');cat.classList.add('scared');scare(true);
+  const mr=m.getBoundingClientRect();look(mr.left+mr.width/2,mr.top+mr.height/2);
+  setTimeout(climb,wasAsleep?1300:1000)},250)}
+function climb(){cat.style.transform='';const r=cat.getBoundingClientRect(),S=2.1,
+ tx=innerWidth/2-(r.left+r.width/2),ty=innerHeight/2-(r.top+r.height/2);
+ cat.classList.add('leap');tail(tx<0);const t0=performance.now();
+ (function jump(now){const p=Math.min(1,(now-t0)/700),e=1-(1-p)*(1-p),k=1+(S-1)*e;
+  cat.style.transform=`translate(${tx*p}px,${ty*e-60*Math.sin(Math.PI*p)}px) scale(${k})`;
+  if(p<1){requestAnimationFrame(jump);return}
+  cat.classList.remove('leap');cat.classList.add('cling');setTimeout(()=>slide(r,S,tx,ty),450)})(t0)}
+function claw(svg,hl){const p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('fill','none');p.setAttribute('stroke-linecap','round');
+ if(hl){p.setAttribute('stroke','rgba(255,246,220,.92)');p.setAttribute('stroke-width','2.4')}
+ else{p.setAttribute('stroke','rgba(25,15,55,.4)');p.setAttribute('stroke-width','4.6');p.setAttribute('transform','translate(1.8 1.8)')}svg.append(p);return p}
+// the cat slips down in short steps; each slip, one paw leaves a single claw scratch mark
+function slide(r,S,tx,ty){const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+ svg.style.cssText=`position:absolute;left:0;top:0;width:${document.documentElement.clientWidth}px;height:${document.documentElement.scrollHeight}px;pointer-events:none;z-index:45;overflow:visible`;document.body.append(svg);
+ const flo=innerHeight-8-r.bottom,yEnd=Math.max(ty+140,flo-(S-1)*r.height/2),n=Math.max(3,Math.round((yEnd-ty)/85)),step=(yEnd-ty)/n;let i=0;
+ function next(){if(i>=n){end();return}
+  const y0=ty+i*step,y1=y0+step,px=i%2?127:37,cs=[-5.5,0,5.5].map(o=>({x:px+o,a:claw(svg,0),b:claw(svg,1),y:null})),t0=performance.now();
+  (function f(now){const p=Math.min(1,(now-t0)/330),y=y0+(y1-y0)*(1-Math.pow(1-p,2.2));
+   cat.style.transform=`translate(${tx}px,${y}px) scale(${S})`;const rr=cat.getBoundingClientRect(),u=rr.width/140,py=rr.top+scrollY+8*u;
+   cs.forEach(c=>{if(c.y===null)c.y=py;const X=(rr.left+c.x*u).toFixed(1),d=`M${X} ${c.y.toFixed(1)}L${X} ${py.toFixed(1)}`;c.a.setAttribute('d',d);c.b.setAttribute('d',d)});
+   if(p<1){requestAnimationFrame(f);return}i++;setTimeout(next,230)})(t0)}
+ function end(){cat.classList.remove('cling','scared');scare(false);
+  setTimeout(()=>{svg.style.transition='opacity .8s';svg.style.opacity=0;setTimeout(()=>svg.remove(),900)},5000);
+  const t1=performance.now();
+  (function g(now){const p=Math.min(1,(now-t1)/450),k=S+(1-S)*p,y=flo-(k-1)*r.height/2;cat.style.transform=`translate(${tx}px,${y}px) scale(${k})`;
+   if(p<1){requestAnimationFrame(g);return}
+   setTimeout(()=>{spooking=false;home(tx,flo,Math.max(1500,Math.min(3000,Math.hypot(tx,flo)/.24)))},500)})(t1)}
+ next()}
+document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('.chip'))return;if(asleep)wake();else chase()});
+</script>
+</body>
+</html>
