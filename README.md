@@ -8,11 +8,19 @@ Thanks for stopping by! 🚀
 
 I'm a **Project Manager** passionate about digital products, AI, game development, and creative technology. I love combining structured project management with hands-on design, development, and testing to turn ideas into engaging digital experiences.
 
-<p align="center">
+<br>
+
+<div align="center">
   <a href="https://lanayavor.github.io/my-resume/" target="_blank">
-    <img src="https://img.shields.io/badge/🌐_Explore_Interactive_Resume-LIVE_PROJECT-00C853?style=for-the-badge&logo=github&logoColor=white" alt="Live Resume Badge" />
+    <img src="https://github.com/user-attachments/assets/c8493dd3-8724-4796-b95e-2198409f4eb6" alt="Live Resume Preview" width="100%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);" />
   </a>
-</p>
+  <br><br>
+  <a href="https://lanayavor.github.io/my-resume/" target="_blank">
+    <img src="https://img.shields.io/badge/🌐_EXPLORE_INTERACTIVE_RESUME-LIVE_PROJECT-00C853?style=for-the-badge&logo=github&logoColor=white" alt="Live Resume Badge" />
+  </a>
+</div>
+
+<br>
 
 > 🟢 **[Click here to view my Live Interactive Resume & Portfolio ↗](https://lanayavor.github.io/my-resume/)**
 >
