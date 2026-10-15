@@ -16,9 +16,9 @@ body{margin:0;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:1
 button{font:inherit;color:inherit;cursor:pointer}
 a{color:inherit}
 :focus-visible{outline:3px solid currentColor;outline-offset:4px}
-header{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;padding:calc(16px + env(safe-area-inset-top,0px)) 22px 40px;font-weight:600;background:linear-gradient(to bottom,var(--hbg) 0%,var(--hbg) 42%,transparent 100%);pointer-events:none}header a{pointer-events:auto}
-header nav{display:flex;gap:18px}header a{text-decoration:none}header a:hover{text-decoration:underline wavy}
-@media(max-width:640px){header nav a:nth-child(n+4){display:none}}
+header{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;padding:calc(16px + env(safe-area-inset-top,0px)) 22px 40px;font-weight:600;background:linear-gradient(to bottom,var(--hbg) 0%,var(--hbg) 42%,transparent 100%);pointer-events:none}header a,header button{pointer-events:auto}
+header nav{display:flex;align-items:center;gap:18px}header a{text-decoration:none}header a:hover{text-decoration:underline wavy}
+@media(max-width:640px){header{padding-left:16px;padding-right:16px;font-size:16px}header nav{gap:12px}header nav a:nth-of-type(n+3){display:none}}
 section{position:relative}
 .wrap{max-width:1100px;margin:0 auto;padding:0 22px}
 /* hero */
@@ -26,6 +26,7 @@ section{position:relative}
 #name{margin:0;font-size:clamp(52px,15vw,220px);line-height:.85;letter-spacing:-.03em;font-variation-settings:'wdth' 75;display:flex;flex-wrap:wrap;gap:0 .02em;user-select:none}
 #name span{display:inline-block;font-weight:200;will-change:font-weight}
 #name .sp{width:.25em}
+.kicker{margin:0 0 clamp(10px,1.6vw,22px);font-size:clamp(26px,4.6vw,68px);font-weight:600;line-height:1;letter-spacing:-.015em}
 .role{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:22px;font-size:22px;font-weight:500;border-top:2px solid currentColor;padding-top:14px}
 /* about */
 #about{background:none;padding:16vh 0}
@@ -57,6 +58,13 @@ h2{font-size:clamp(40px,9vw,110px);line-height:.9;margin:0;letter-spacing:-.03em
 #knob{position:absolute;top:50%;left:0;width:24px;height:24px;border-radius:50%;background:var(--ink);border:3px solid var(--lemon);transform:translate(-50%,-50%);cursor:grab;box-shadow:0 3px 0 rgba(0,0,0,.22);transition:transform .15s}
 .pbar:hover #knob,.pbar:focus-visible #knob{transform:translate(-50%,-50%) scale(1.15)}.pbar.drag,.pbar.drag #knob{cursor:grabbing}.pbar.drag #knob{transform:translate(-50%,-50%) scale(1.25)}
 /* skills */
+#highlights{padding:16vh 0}#highlights .wrap{max-width:1240px}
+.ach{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
+.acard{background:var(--ink);color:var(--lemon);border-radius:24px;padding:20px 22px 22px;border-top:7px solid var(--c,var(--tang));box-shadow:0 8px 0 rgba(0,0,0,.18)}
+.acard small{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--c);margin-bottom:10px}
+.acard h3{margin:0 0 10px;font-size:clamp(24px,2.7vw,34px);line-height:1.05;letter-spacing:-.02em;font-weight:800}
+.acard p{margin:0;font-size:14.6px;line-height:1.45;opacity:.9}
+@media(max-width:760px){.ach{grid-template-columns:1fr}}
 #skills{padding:16vh 0}
 .filters{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 18px}
 .f{border:2.5px solid var(--ink);background:none;padding:8px 18px;border-radius:99px;font-weight:600}
@@ -70,12 +78,25 @@ h2{font-size:clamp(40px,9vw,110px);line-height:.9;margin:0;letter-spacing:-.03em
 #certs{padding:16vh 0;overflow:hidden}
 #deck{position:relative;height:340px;max-width:460px;margin:50px auto 24px}
 .cert{position:absolute;inset:0;background:var(--ink);color:var(--pink);border-radius:26px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;border:0;transition:transform .55s cubic-bezier(.3,1.4,.5,1),opacity .4s;box-shadow:0 14px 0 rgba(0,0,0,.18)}
+.info{display:grid;grid-template-columns:1.8fr 1fr;gap:20px;max-width:900px;margin:64px auto 0;text-align:left}
+.icard{background:var(--ink);color:var(--pink);border-radius:26px;padding:26px;box-shadow:0 14px 0 rgba(0,0,0,.18);display:flex;flex-direction:column;gap:18px}
+.icard h3{margin:0;font-size:30px;line-height:1.05;font-weight:700;color:var(--lemon)}
+.icard .ent{display:flex;flex-direction:column;gap:3px}.icard .ent b{font-size:20px;line-height:1.2;font-weight:700}.icard .ent em{font-style:normal;opacity:.85}.icard .ent span{font-size:14px;opacity:.65}
+.icard .ent+.ent{border-top:2px solid rgba(227,181,208,.25);padding-top:16px}
+.icard .lvl{font-size:clamp(70px,9vw,110px);font-weight:800;line-height:.85;letter-spacing:-.03em;margin-top:auto}
+@media(max-width:760px){.info{grid-template-columns:1fr}}
 .cert b{font-size:30px;line-height:1.05;font-weight:700}.cert em{font-style:normal;opacity:.8}.cert .no{font-size:70px;font-weight:800;line-height:.8;opacity:.9}
 .dk{text-align:center}.btn{border:2.5px solid var(--ink);background:none;border-radius:99px;padding:10px 24px;font-weight:700;font-size:18px}.btn:hover{background:var(--ink);color:var(--pink)}
 /* contact */
 #contact{padding:20vh 0 12vh;text-align:center}
-#mail{display:inline-block;font-size:clamp(17px,2.2vw,22px);font-weight:700;text-decoration:none;padding:.55em 1.3em;border:2.5px solid currentColor;border-radius:99px;transition:transform .15s;will-change:transform}
-#mail:hover{background:var(--lemon);color:var(--ink)}
+#mail,.pill{display:inline-block;font-size:clamp(17px,2.2vw,22px);font-weight:700;text-decoration:none;padding:.55em 1.3em;border:2.5px solid currentColor;border-radius:99px;transition:transform .15s;will-change:transform}
+#mail:hover,.pill:hover{background:var(--lemon);color:var(--ink)}
+.ghwrap{margin-top:28px}
+#snd{display:flex;align-items:center;gap:8px;background:var(--ink);color:var(--lemon);border:0;border-radius:99px;padding:7px 14px;font-family:inherit;font-weight:700;font-size:13px;line-height:1;cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,.2)}
+#snd i{display:inline-flex;gap:2px;align-items:flex-end;height:14px}#snd i s{display:block;width:3px;height:4px;background:currentColor;border-radius:2px}
+#snd.on i s{animation:eq 1s ease-in-out infinite}#snd.on i s:nth-child(2){animation-delay:.2s}#snd.on i s:nth-child(3){animation-delay:.4s}
+@keyframes eq{0%,100%{height:3px}50%{height:14px}}
+@media(max-width:640px){#snd b{display:none}#snd{padding:9px 11px}}
 #toast{position:fixed;left:50%;bottom:calc(28px + env(safe-area-inset-bottom,0px));transform:translate(-50%,16px);background:var(--ink);color:var(--lemon);padding:11px 22px;border-radius:99px;font-weight:700;font-size:17px;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:60;box-shadow:0 8px 24px rgba(0,0,0,.3)}#toast.show{opacity:1;transform:translate(-50%,0)}
 .credit{margin-top:14vh;font-size:15px;font-weight:600;letter-spacing:.02em;opacity:.75}
 .links{display:flex;gap:22px;justify-content:center;margin-top:26px;font-size:22px;font-weight:600}
@@ -121,7 +142,7 @@ h2{font-size:clamp(40px,9vw,110px);line-height:.9;margin:0;letter-spacing:-.03em
 .zz span{position:absolute;left:0;top:0;opacity:0;animation:zf 3s ease-out infinite}
 .zz span:nth-child(2){font-size:1.3em;animation-delay:1s}.zz span:nth-child(3){font-size:1.65em;animation-delay:2s}
 @keyframes zf{0%{opacity:0;transform:translate(0,0) scale(.6) rotate(0)}20%{opacity:1}100%{opacity:0;transform:translate(26px,-58px) scale(1.15) rotate(14deg)}}
-#bowl{position:absolute;right:7%;bottom:10px;width:clamp(112px,16vw,150px);z-index:-2;pointer-events:none;transform-origin:50% 100%}
+#bowl{position:absolute;left:calc(50% - clamp(56px,8vw,75px));bottom:10px;width:clamp(112px,16vw,150px);z-index:-2;pointer-events:none;transform-origin:50% 100%}
 #bowl svg{display:block;width:100%;overflow:visible}
 .kib{position:absolute;left:0;top:0;width:13px;height:9px;border-radius:55% 45% 50% 50%;background:#b27244;box-shadow:inset -2px -2px 0 rgba(0,0,0,.25);z-index:-1;pointer-events:none;will-change:transform}
 #cat.eat .bd{animation:chew .7s ease-in-out infinite}
@@ -137,13 +158,16 @@ h2{font-size:clamp(40px,9vw,110px);line-height:.9;margin:0;letter-spacing:-.03em
 @keyframes hf{0%{opacity:0;transform:translateY(0) scale(.6)}25%{opacity:1}100%{opacity:0;transform:translateY(-44px) scale(1.1)}}
 #mail.boing{animation:boing .75s cubic-bezier(.3,1.4,.5,1)}
 @keyframes boing{0%{transform:none}18%{transform:translateY(-30px) scale(.94,1.1)}38%{transform:translateY(0) scale(1.14,.82)}58%{transform:translateY(-13px) scale(.98,1.04)}78%{transform:translateY(0) scale(1.06,.93)}100%{transform:none}}
-#cat.scared .eye{animation:none;transform:scale(1.28)}
-#cat.scared .bd{animation:shake .1s linear infinite}
-@keyframes shake{0%,100%{transform:translateX(-1.2px)}50%{transform:translateX(1.2px)}}
-.cw{opacity:0}#cat.leap .cw,#cat.cling .cw,#cat.leap .ft,#cat.cling .ft{opacity:1}
-#cat.leap .bd{animation:none;transform:scale(.9,1.2)}
-#cat.cling .bd{animation:clw .45s ease-in-out infinite}
-@keyframes clw{0%,100%{transform:scale(.92,1.13) rotate(-2.5deg)}50%{transform:scale(.92,1.13) rotate(2.5deg)}}
+#cat.dance .bd{animation:dance 1.8s ease-in-out 3}
+@keyframes dance{0%{transform:translate(0,0) rotate(0) scale(1,1)}8%{transform:translate(0,-14px) rotate(-4deg) scale(.95,1.08)}16%{transform:translate(0,0) rotate(-4deg) scale(1.08,.9)}24%{transform:translate(0,-14px) rotate(4deg) scale(.95,1.08)}32%{transform:translate(0,0) rotate(4deg) scale(1.08,.9)}40%{transform:translate(-6px,0) rotate(-5deg) scale(1,1)}48%{transform:translate(6px,0) rotate(5deg) scale(1,1)}56%{transform:translate(0,-18px) rotate(0) scale(.95,1.1)}64%{transform:translate(0,0) rotate(0) scale(1.08,.9)}72%{transform:translate(6px,0) rotate(5deg) scale(1,1)}80%{transform:translate(-6px,0) rotate(-5deg) scale(1,1)}88%{transform:translate(0,-18px) rotate(0) scale(.95,1.1)}96%{transform:translate(0,0) rotate(0) scale(1.08,.9)}100%{transform:translate(0,0) rotate(0) scale(1,1)}}
+#cat.dance .eye{animation:none;transform:scaleY(.35)}
+#cat.dance .tl{animation-duration:.35s}
+#cat.dance .ft{opacity:1}#cat.dance .f1,#cat.dance .f2{animation-duration:.3s}#cat.dance .f2{animation-delay:-.15s}
+.nn{display:none;position:absolute;left:-8%;top:8%;width:116%;font-size:22px;line-height:1;font-weight:800;color:#f1e6c4;text-shadow:0 1px 3px rgba(10,14,40,.5);pointer-events:none}
+#cat.dance .nn{display:block}
+.nn span{position:absolute;top:0;opacity:0;animation:nf 1.6s ease-out infinite}
+.nn span:nth-child(1){left:0}.nn span:nth-child(2){left:46%;animation-delay:.5s;color:#f2a8c4}.nn span:nth-child(3){right:0;animation-delay:1s}
+@keyframes nf{0%{opacity:0;transform:translateY(0) rotate(-10deg) scale(.7)}25%{opacity:1}100%{opacity:0;transform:translateY(-70px) rotate(14deg) scale(1.15)}}
 @keyframes plop{0%{transform:scale(1.1,.84)}45%{transform:scale(.96,1.06)}100%{transform:none}}
 .f1,.f2{animation:fs .44s ease-in-out infinite}.f2{animation-delay:-.22s}
 #cat.run .f1,#cat.run .f2{animation-duration:.24s}#cat.run .f2{animation-delay:-.12s}
@@ -152,26 +176,27 @@ h2{font-size:clamp(40px,9vw,110px);line-height:.9;margin:0;letter-spacing:-.03em
 @keyframes wag{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(9deg)}}
 .eye{transform-box:fill-box;transform-origin:center;animation:blink 4.6s infinite}
 @keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}#mail.boing,.zz span,.hh span,.tl,.eye,.bd,.f1,.f2,#cat.stretch .bd,#cat.stretch .tl,#hero::before,#hero::after{animation:none}.rv{opacity:1;transform:none}*{transition-duration:.01s!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}#snd.on i s,#mail.boing,.nn span,.zz span,.hh span,.tl,.eye,.bd,.f1,.f2,#cat.stretch .bd,#cat.stretch .tl,#hero::before,#hero::after{animation:none}.rv{opacity:1;transform:none}*{transition-duration:.01s!important}}
 </style>
 </head>
 <body>
 <div id="nest" aria-hidden="true"><svg viewBox="0 0 200 66"><path d="M4 40C28 16 72 10 100 10C128 10 172 16 196 40C190 52 150 62 100 62C50 62 10 52 4 40Z" fill="#dce9fb" stroke="#6f86ad" stroke-width="1.2" stroke-linejoin="round"/><path d="M10 44C50 52 150 52 190 44C184 53 148 62 100 62C52 62 16 53 10 44Z" fill="#c3d5ef"/><path d="M10 44C50 52 150 52 190 44" fill="none" stroke="#8aa1c8" stroke-width="1.1"/><path d="M26 30L40 26M46 24L58 21M144 21L158 24M162 26L174 30M30 38L48 41M152 41L170 38" stroke="#b4c8e6" stroke-width="1.2" stroke-linecap="round" fill="none"/><ellipse cx="100" cy="27" rx="40" ry="4.5" fill="rgba(80,100,150,.22)"/></svg></div>
-<div id="cat" aria-hidden="true"><svg viewBox="0 0 140 100" width="100%"><ellipse cx="82" cy="94" rx="46" ry="3.2" fill="rgba(70,90,140,.35)"/><g class="bd"><g id="tw"><g class="tl"><path d="M46 66C36 58 21 60 16 68C12 76 18 85 31 86C43 87 51 83 53 77Z" fill="#050508"/></g></g><g class="cw"><path d="M47 60C38 52 33 42 32 31M117 60C126 52 131 42 132 31" fill="none" stroke="#050508" stroke-width="9" stroke-linecap="round"/><ellipse cx="32" cy="28" rx="8" ry="7" fill="#050508"/><ellipse cx="132" cy="28" rx="8" ry="7" fill="#050508"/><path d="M27 22l-3-7M32 20.5v-8M37 22l3-7M127 22l-3-7M132 20.5v-8M137 22l3-7" stroke="#f1e6c4" stroke-width="1.6" stroke-linecap="round" fill="none"/></g><ellipse class="ft f1" cx="60" cy="93" rx="10" ry="5.5" fill="#050508"/><ellipse class="ft f2" cx="104" cy="93" rx="10" ry="5.5" fill="#050508"/><path d="M38 52C38 38 44 26 50 15L56 10C60 10 66 15 70 17C80 15.5 90 15.5 100 17C104 14 108 12 112 10C117 20 125 34 128 52C131 68 129 82 119 88C104 94 62 94 47 88C37 84 35 70 38 52Z" fill="#050508"/><g id="face"><g class="eye"><circle cx="59.5" cy="50" r="13.5" fill="#fff"/><circle class="pu" cx="59.5" cy="50" r="10.6" fill="#050508"/></g><g class="eye"><circle cx="104.5" cy="50" r="13.5" fill="#fff"/><circle class="pu" cx="104.5" cy="50" r="10.6" fill="#050508"/></g><ellipse cx="82" cy="66" rx="2.6" ry="3.5" fill="#fff"/></g></g></svg><div class="zz" aria-hidden="true"><span>Z</span><span>Z</span><span>Z</span></div><div class="hh" aria-hidden="true"><span>♥</span><span>♥</span><span>♥</span></div></div>
+<div id="cat" aria-hidden="true"><svg viewBox="0 0 140 100" width="100%"><ellipse cx="82" cy="94" rx="46" ry="3.2" fill="rgba(70,90,140,.35)"/><g class="bd"><g id="tw"><g class="tl"><path d="M46 66C36 58 21 60 16 68C12 76 18 85 31 86C43 87 51 83 53 77Z" fill="#050508"/></g></g><ellipse class="ft f1" cx="60" cy="93" rx="10" ry="5.5" fill="#050508"/><ellipse class="ft f2" cx="104" cy="93" rx="10" ry="5.5" fill="#050508"/><path d="M38 52C38 38 44 26 50 15L56 10C60 10 66 15 70 17C80 15.5 90 15.5 100 17C104 14 108 12 112 10C117 20 125 34 128 52C131 68 129 82 119 88C104 94 62 94 47 88C37 84 35 70 38 52Z" fill="#050508"/><g id="face"><g class="eye"><circle cx="59.5" cy="50" r="13.5" fill="#fff"/><circle class="pu" cx="59.5" cy="50" r="10.6" fill="#050508"/></g><g class="eye"><circle cx="104.5" cy="50" r="13.5" fill="#fff"/><circle class="pu" cx="104.5" cy="50" r="10.6" fill="#050508"/></g><ellipse cx="82" cy="66" rx="2.6" ry="3.5" fill="#fff"/></g></g></svg><div class="zz" aria-hidden="true"><span>Z</span><span>Z</span><span>Z</span></div><div class="hh" aria-hidden="true"><span>♥</span><span>♥</span><span>♥</span></div><div class="nn" aria-hidden="true"><span>♪</span><span>♫</span><span>♪</span></div></div>
 <div id="mouse" aria-hidden="true"><svg viewBox="0 0 60 34" width="100%"><path d="M50 24C58 26 59 14 55 9" fill="none" stroke="#0d0d14" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="34" cy="22" rx="17" ry="10" fill="#0d0d14"/><ellipse cx="15" cy="23" rx="10" ry="8" fill="#0d0d14"/><circle cx="14" cy="14" r="6" fill="#0d0d14"/><circle cx="25" cy="14" r="6" fill="#0d0d14"/><circle cx="14" cy="14" r="3" fill="#f4a6b8"/><circle cx="25" cy="14" r="3" fill="#f4a6b8"/><circle cx="7" cy="24" r="1.8" fill="#f4a6b8"/><circle cx="14" cy="21" r="1.7" fill="#fff"/></svg></div>
 <div id="toast" role="status" aria-live="polite"></div>
-<header><a href="#hero">Svitlana Sobkiv</a><nav><a href="#about">About</a><a href="#exp">Experience</a><a href="#skills">Skills</a><a href="#certs">Certificates</a><a href="#contact">Contact</a></nav></header>
+<header><a href="#hero">Svitlana Sobkiv</a><nav><button id="snd" type="button" aria-pressed="false" aria-label="Toggle sound"><i><s></s><s></s><s></s></i><b>Sound off</b></button><a href="#about">About</a><a href="#highlights">Highlights</a><a href="#exp">Experience</a><a href="#skills">Skills</a><a href="#certs">Certificates</a><a href="#contact">Contact</a></nav></header>
 
 <section id="hero" data-bg="#5a4a8c">
+  <p class="kicker">Digital Project Manager</p>
   <h1 id="name" aria-label="Svitlana Sobkiv">SVITLANA SOBKIV</h1>
-  <div class="role"><span>Digital Project Manager</span><span>Move your cursor over the name. Then scroll.</span></div>
+  <div class="role"><span>Move your cursor over the name. Then scroll.</span></div>
 </section>
 
 <section id="about" data-bg="#ecdcb4">
   <div class="wrap">
     <div class="card">
       <div class="cardhead"><span class="tag">About me</span><span class="line"></span></div>
-      <div class="blk lead"><h3>Who I am</h3><p id="story">I’m a Creative-minded Digital Project Manager who enjoys turning ideas into digital experiences that actually get built. With 3+ years of experience in IT and AI project management, I work at the intersection of technology, creativity and people - turning business ideas and requirements into clear plans, coordinating designers and developers, managing priorities and dependencies, solving problems, and keeping projects moving from concept to delivery.</p></div>
+      <div class="blk lead"><p id="story">I’m a Creative-minded Digital Project Manager who enjoys turning ideas into digital experiences that actually get built. With 3+ years of experience in IT and AI project management, I work at the intersection of technology, creativity and people - turning business ideas and requirements into clear plans, coordinating designers and developers, managing priorities and dependencies, solving problems, and keeping projects moving from concept to delivery.</p></div>
       <div class="cols">
         <div class="blk"><h3>How I work</h3><p class="more">I’m comfortable working across the digital product lifecycle, with experience in Agile/Scrum, UX/UI, frontend and backend workflows, QA, stakeholder communication and project coordination. I enjoy bringing structure to complex projects without losing sight of the creative idea behind them.</p></div>
         <div class="blk"><h3>Creative side</h3><p class="more">My creative background adds another dimension to my PM approach. I have experience and a strong interest in 3D visualization, visual design, animation and game development, which helps me understand creative workflows and communicate effectively with designers, artists and developers. I’m especially interested in digital experiences, websites, creative campaigns, interactive products, AI-powered solutions and game development - projects where technology and creativity come together.</p></div>
@@ -179,9 +204,20 @@ h2{font-size:clamp(40px,9vw,110px);line-height:.9;margin:0;letter-spacing:-.03em
       <p class="quote">Great project management isn’t just about tracking tasks. It’s about creating the environment where good ideas can become great products.</p>
       <div class="facts">
         <div class="fact"><b data-n="3" data-s="+">0</b>years in IT &amp; AI project management</div>
-        <div class="fact"><b data-n="2">0</b>roles at TELUS Digital</div>
         <div class="fact"><b data-n="3">0</b>certificates earned</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="highlights" data-bg="#86a0cf">
+  <div class="wrap">
+    <h2>Work highlights</h2>
+    <div class="ach">
+      <article class="acard" style="--c:var(--tang)"><small>AI Development</small><h3>30% Faster AI Responses</h3><p>Improved contextual AI chatbot performance through reranking optimization, collaborating on AI workflows to improve response speed and user experience.</p></article>
+      <article class="acard" style="--c:var(--mint)"><small>Digital Product Delivery</small><h3>From Idea to Working Prototype</h3><p>Translated product concepts into a working prototype by coordinating requirements, UI/UX design, development, and testing - turning ideas into tangible solutions ready for review and feedback.</p></article>
+      <article class="acard" style="--c:var(--pink)"><small>Project Management</small><h3>Structured Digital Project Delivery</h3><p>Connected business requirements with technical execution by organizing tasks, priorities, dependencies, milestones, and stakeholder communication across international, cross-functional teams.</p></article>
+      <article class="acard" style="--c:var(--lemon)"><small>Quality &amp; Collaboration</small><h3>Design-to-Delivery Coordination</h3><p>Coordinated design reviews, development follow-ups, and QA activities to validate deliverables against requirements, identify blockers, and support delivery readiness.</p></article>
     </div>
   </div>
 </section>
@@ -208,6 +244,13 @@ h2{font-size:clamp(40px,9vw,110px);line-height:.9;margin:0;letter-spacing:-.03em
     <h2>Certificates</h2>
     <div id="deck"></div>
     <button class="btn" id="shuf">Next certificate</button>
+    <div class="info">
+      <article class="icard edu"><h3>Education</h3>
+        <div class="ent"><b>Ternopil Academy of National Economy</b><em>Bachelor's Degree, Law</em><span>Sep 2007 - Jun 2011</span></div>
+        <div class="ent"><b>Ivan Franko National University of Lviv</b><em>Master's Degree, Law</em><span>Sep 2011 - Jun 2012</span></div>
+      </article>
+      <article class="icard lang"><h3>English</h3><div class="lvl">C1</div></article>
+    </div>
   </div>
 </section>
 
@@ -215,6 +258,7 @@ h2{font-size:clamp(40px,9vw,110px);line-height:.9;margin:0;letter-spacing:-.03em
   <div class="wrap">
     <a id="mail" href="mailto:svitlana.sobkiv@gmail.com">svitlana.sobkiv@gmail.com</a>
     <div class="links"><a href="https://www.linkedin.com/in/svitlana-sobkiv/" target="_blank" rel="noopener">LinkedIn</a><a href="#hero">Back to top</a></div>
+    <div class="ghwrap"><a class="pill" href="https://github.com/LanaYavor" target="_blank" rel="noopener">Check out my GitHub page</a></div>
     <footer class="credit">Concept, Design &amp; Development by Svitlana Sobkiv</footer>
   </div>
 </section>
@@ -223,7 +267,7 @@ h2{font-size:clamp(40px,9vw,110px);line-height:.9;margin:0;letter-spacing:-.03em
 /* ===== EDIT YOUR CONTENT HERE ===== */
 const NAME="SVITLANA SOBKIV";
 const JOBS=[
- {d:"07/2026 - Present",t:"7eminar &amp; Kadroland Platforms",c:"",b:["Manage the end-to-end delivery of digital projects, including website improvements, AI-powered features, and chatbot integrations.","Coordinate developers, designers, AI specialists, and stakeholders to translate business and marketing goals into product requirements, tasks, and deliverables.","Plan project timelines, prioritize tasks, track progress, manage dependencies, and ensure timely delivery of features and improvements.","Collaborate on UI/UX design and user journeys to improve website usability, customer experience, and engagement with digital products.","Participate in AI chatbot development and testing, evaluating response quality, relevance, and functionality to improve the user experience.","Test web platform features and AI integrations, identify bugs, coordinate fixes, and validate solutions before release.","Support the development of digital content and interactive learning experiences, aligning platform functionality with audience needs and business objectives.","Use AI tools to streamline workflows, support content and product development, and improve team efficiency.","Maintain project documentation, communicate updates to stakeholders, and coordinate feedback throughout the development lifecycle."]},
+ {d:"07/2026 - Present",t:"Digital Project Manager",c:"7eminar &amp; Kadroland Platforms",b:["Manage the end-to-end delivery of digital projects, including website improvements, AI-powered features, and chatbot integrations.","Coordinate developers, designers, AI specialists, and stakeholders to translate business and marketing goals into product requirements, tasks, and deliverables.","Plan project timelines, prioritize tasks, track progress, manage dependencies, and ensure timely delivery of features and improvements.","Collaborate on UI/UX design and user journeys to improve website usability, customer experience, and engagement with digital products.","Participate in AI chatbot development and testing, evaluating response quality, relevance, and functionality to improve the user experience.","Test web platform features and AI integrations, identify bugs, coordinate fixes, and validate solutions before release.","Support the development of digital content and interactive learning experiences, aligning platform functionality with audience needs and business objectives.","Use AI tools to streamline workflows, support content and product development, and improve team efficiency.","Maintain project documentation, communicate updates to stakeholders, and coordinate feedback throughout the development lifecycle."]},
  {d:"09/2023 - 03/2026",t:"Project Manager",c:"TELUS International (TELUS Digital), Canada",b:["Coordinated IT, AI, and data-related projects, aligning client expectations, business requirements, and technical team deliverables.","Communicated with international stakeholders to clarify requirements, confirm priorities, resolve issues, and provide project status updates.","Translated business needs into actionable tasks, documented requirements, and tracked progress, dependencies, blockers, and deadlines.","Supported project planning, sprint planning, workload coordination, and milestone tracking to keep delivery on schedule.","Collaborated with cross-functional teams to resolve workflow issues, manage changing priorities, and maintain alignment on project objectives.","Maintained project documentation, status reports, action items, and task tracking in Jira and ClickUp.","Coordinated quality assurance and follow-up activities, helping ensure deliverables met agreed requirements.","Identified delivery risks and potential blockers, communicated issues to relevant stakeholders, and supported timely resolution.","Contributed to process improvements and more structured project tracking and reporting."]},
  {d:"08/2022 - 09/2023",t:"Junior Project Coordinator",c:"TELUS International (TELUS Digital), Canada",b:["Supported day-to-day project coordination, including task tracking, follow-ups, meetings, and deadlines.","Maintained Jira and ClickUp boards, tracking tasks, priorities, dependencies, and project progress.","Supported Scrum ceremonies, including daily stand-ups, sprint planning, and backlog refinement.","Prepared and maintained project documentation, technical requirements, meeting notes, and status updates.","Assisted with stakeholder communication and coordinated follow-ups with project team members.","Monitored project risks, blockers, and dependencies and escalated issues when needed.","Supported project planning and team coordination."]}
  
@@ -292,7 +336,7 @@ pbar.addEventListener('click',e=>e.stopPropagation());
 pbar.addEventListener('keydown',e=>{const c=parseFloat($('#pb').style.width)/100||0;if(e.key=='ArrowRight'||e.key=='ArrowDown'){toP(c+.08);e.preventDefault()}else if(e.key=='ArrowLeft'||e.key=='ArrowUp'){toP(c-.08);e.preventDefault()}});
 // reveal on scroll
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-$$('h2,.more,.quote,.fact,.filters,#field,#deck,#shuf,#contact .wrap>p,.links').forEach(e=>{e.classList.add('rv');io.observe(e)});$$('.fact').forEach((f,i)=>f.style.transitionDelay=i*.12+'s');
+$$('h2,.acard,.icard,.more,.quote,.fact,.filters,#field,#deck,#shuf,#contact .wrap>p,.links').forEach(e=>{e.classList.add('rv');io.observe(e)});$$('.fact').forEach((f,i)=>f.style.transitionDelay=i*.12+'s');$$('.acard').forEach((f,i)=>f.style.transitionDelay=i*.1+'s');$$('.icard').forEach((f,i)=>f.style.transitionDelay=i*.15+'s');
 // cat + pillow + mouse
 const cat=$('#cat'),mouse=$('#mouse'),face=$('#face'),tw=$('#tw'),ps=$$('#cat .pu');let busy=true,seated=false,started=false,idle=0,asleep=false,mx=innerWidth/2,my=innerHeight/2;
 function tail(m){tw.setAttribute('transform',m?'translate(164 0) scale(-1 1)':'')}
@@ -318,8 +362,8 @@ function wake(){asleep=false;cat.classList.remove('scratch','sleep');cat.classLi
 function endChase(){mouse.style.display='none';cat.classList.remove('run','here');cat.style.transform='';
  setTimeout(()=>{const r=cat.getBoundingClientRect();arrive(Math.round(innerWidth+24-r.left),1700)},6000)}
 function chase(){if(busy||rm||!seated)return;clearTimeout(idle);busy=true;seated=false;
- const vw=innerWidth,cr=cat.getBoundingClientRect(),mw=46,mh=mw*34/60,floor=innerHeight-8,gy=floor-mh,drop=Math.max(0,floor-cr.bottom),x0=vw*(.2+.25*Math.random()),off=cr.right+30,t0=performance.now();mouse.style.display='block';
- function f(now){const t=Math.max(0,now-t0);let x,y;
+ const vw=innerWidth,cr=cat.getBoundingClientRect(),mw=46,mh=mw*34/60,floor=innerHeight-8,gy=floor-mh,drop=Math.max(0,floor-cr.bottom),x0=vw*(.2+.25*Math.random()),off=cr.right+30,t0=performance.now();mouse.style.display='block';let l1=0,l2=0;
+ function f(now){const t=Math.max(0,now-t0);let x,y;if(!l1&&t>=700){l1=1;thud(1)}if(!l2&&t>=920){l2=1;thud(.55)}
   if(t<700){x=x0;y=-50+(gy+50)*(t/700)**2}else if(t<920){x=x0;y=gy-36*Math.sin(Math.PI*(t-700)/220)}else{x=x0-.45*(t-920);y=gy-5*Math.abs(Math.sin(t/55))}
   mouse.style.transform=`translate(${x}px,${y}px)`;
   const s=t-1150;let cx=0;
@@ -375,42 +419,61 @@ function eat(tx,ty,dur){tail(true);cat.classList.add('eat');
    setTimeout(()=>{cat.classList.remove('cheer');home(tx,ty,dur)},1450)},500)}},760)},500)}
 function home(tx,ty,dur){walkTo(tx,ty,0,0,dur,false,true,()=>{cat.style.transform='';tail(false);cat.classList.add('plop');
  setTimeout(()=>{cat.classList.remove('plop');busy=false;seated=true;feeding=false;look(mx,my);armIdle();setTimeout(()=>cat.classList.remove('happy'),1300)},600)})}
-// ===== email click: bounce -> cat wakes / gets scared -> leaps on the page, claws it and slides down =====
+// ===== sound: chill lo-fi background music + cat/mouse effects (all synthesised, no files) =====
+const AC=window.AudioContext||window.webkitAudioContext;
+let ac=null,master=null,sbus=null,mbus=null,rev=null,dly=null,NB=null,BB=null,soundOn=false,want=true,musicT=0,nextT=0,stepI=0;
+try{want=localStorage.getItem('snd')!=='0'}catch(_){}
+const midi=m=>440*Math.pow(2,(m-69)/12);
+function can(){return soundOn&&ac&&ac.state=='running'}
+function initAudio(ctx){if(ac)return;ac=ctx||new AC();master=ac.createGain();master.gain.value=1;master.connect(ac.destination);
+ sbus=ac.createGain();sbus.gain.value=.9;sbus.connect(master);mbus=ac.createGain();mbus.gain.value=.3;mbus.connect(master);
+ const len=Math.floor(ac.sampleRate*2.4),imp=ac.createBuffer(2,len,ac.sampleRate);for(let c=0;c<2;c++){const d=imp.getChannelData(c);for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,3)}
+ const cv=ac.createConvolver();cv.buffer=imp;rev=ac.createGain();rev.gain.value=.4;rev.connect(cv);cv.connect(mbus);
+ dly=ac.createDelay(1);dly.delayTime.value=.42;const fb=ac.createGain();fb.gain.value=.34,lp=ac.createBiquadFilter();lp.type='lowpass';lp.frequency.value=1400;dly.connect(lp);lp.connect(fb);fb.connect(dly);lp.connect(mbus);
+ const n=ac.sampleRate*2;NB=ac.createBuffer(1,n,ac.sampleRate);BB=ac.createBuffer(1,n*2,ac.sampleRate);const a=NB.getChannelData(0),b=BB.getChannelData(0);let l=0;
+ for(let i=0;i<n;i++)a[i]=Math.random()*2-1;for(let i=0;i<n*2;i++){l=(l+.02*(Math.random()*2-1))/1.02;b[i]=l*3.5}}
+function tone(f,t,dur,o){o=o||{};const os=ac.createOscillator(),o2=ac.createOscillator(),g=ac.createGain(),h=ac.createGain(),fl=ac.createBiquadFilter();
+ os.type=o.type||'sine';o2.type='triangle';os.frequency.value=f;o2.frequency.value=f*2;o2.detune.value=5;h.gain.value=o.h==null?.3:o.h;o2.connect(h);h.connect(g);os.connect(g);
+ fl.type='lowpass';fl.frequency.value=o.lp||1900;g.connect(fl);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(o.v||.08,t+(o.a||.012));g.gain.exponentialRampToValueAtTime(.0008,t+dur);
+ fl.connect(mbus);if(o.send){const sd=ac.createGain();sd.gain.value=o.send;fl.connect(sd);sd.connect(rev);sd.connect(dly)}
+ os.start(t);o2.start(t);os.stop(t+dur+.05);o2.stop(t+dur+.05)}
+function nz(t,dur,v,type,f,q,dest){const s=ac.createBufferSource();s.buffer=NB;const fl=ac.createBiquadFilter();fl.type=type;fl.frequency.value=f;fl.Q.value=q||.7;const g=ac.createGain();
+ g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.0005,t+dur);s.connect(fl);fl.connect(g);g.connect(dest||mbus);s.start(t,Math.random());s.stop(t+dur+.02)}
+function kick(t,v){const o=ac.createOscillator(),g=ac.createGain();o.frequency.setValueAtTime(130,t);o.frequency.exponentialRampToValueAtTime(42,t+.18);g.gain.setValueAtTime(.24*v,t);g.gain.exponentialRampToValueAtTime(.001,t+.28);o.connect(g);g.connect(mbus);o.start(t);o.stop(t+.3)}
+const CH=[{b:48,n:[55,59,64,67]},{b:45,n:[55,60,64,67]},{b:41,n:[57,60,64,69]},{b:43,n:[57,62,64,67]}],PENT=[72,74,76,79,81,84],S16=60/74/4;
+function step16(i,t){const c=CH[Math.floor(i/16)%4],st=i%16;t+=st%2?S16*.18:0;
+ if(st==0)c.n.forEach((m,k)=>tone(midi(m),t+k*.022,2.8,{v:.05,send:.5}));
+ if(st==6)c.n.forEach((m,k)=>tone(midi(m),t+k*.02,1.1,{v:.03,send:.5}));
+ if(st==10)c.n.slice(2).forEach((m,k)=>tone(midi(m),t+k*.02,1,{v:.028,send:.5}));
+ if(st==0)tone(midi(c.b),t,3,{v:.17,lp:420,h:0});if(st==10)tone(midi(c.b),t,1,{v:.1,lp:420,h:0});
+ if(st==0||st==8||st==11)kick(t,st==11?.45:1);
+ if(st==4||st==12)nz(t,.16,.06,'bandpass',2800,.6);
+ if(st%2==0)nz(t,.05,st%4==0?.025:.015,'highpass',7000);
+ if([2,5,9,13].includes(st)&&Math.random()<.34)tone(midi(PENT[Math.floor(Math.random()*PENT.length)]),t,1.6,{type:'triangle',v:.04,lp:2600,send:.9,h:.1})}
+function startMusic(){if(musicT)return;nextT=ac.currentTime+.15;musicT=setInterval(()=>{while(nextT<ac.currentTime+.6){step16(stepI,nextT);nextT+=S16;stepI++}},150)}
+function stopMusic(){clearInterval(musicT);musicT=0}
+// light, smooth landing of the mouse
+function thud(v){if(!can())return;const t=ac.currentTime,o=ac.createOscillator(),g=ac.createGain();o.frequency.setValueAtTime(190,t);o.frequency.exponentialRampToValueAtTime(70,t+.1);
+ g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.2*v,t+.008);g.gain.exponentialRampToValueAtTime(.001,t+.17);o.connect(g);g.connect(sbus);o.start(t);o.stop(t+.2);nz(t,.07,.06*v,'lowpass',1100,.7,sbus)}
+// sound switch (browsers only allow audio after a click / key press, so it starts on your first one)
+const snd=$('#snd');
+function paintSnd(){snd.classList.toggle('on',soundOn);snd.setAttribute('aria-pressed',soundOn);snd.querySelector('b').textContent=soundOn?'Sound on':'Sound off'}
+function soundUp(){try{initAudio();ac.resume&&ac.resume();soundOn=true;master.gain.setTargetAtTime(1,ac.currentTime,.15);startMusic()}catch(_){soundOn=false}paintSnd()}
+function soundDown(){soundOn=false;if(ac){master.gain.setTargetAtTime(0,ac.currentTime,.1);stopMusic()}paintSnd()}
+snd.addEventListener('click',e=>{e.stopPropagation();if(soundOn){want=false;soundDown()}else{want=true;soundUp()}try{localStorage.setItem('snd',want?'1':'0')}catch(_){}});
+function unlock(e){if(e.target.closest&&e.target.closest('#snd'))return;['pointerdown','pointerup','keydown','touchend'].forEach(t=>removeEventListener(t,unlock,true));if(want&&!soundOn)soundUp()}
+['pointerdown','pointerup','keydown','touchend'].forEach(t=>addEventListener(t,unlock,true));
+document.addEventListener('visibilitychange',()=>{if(!ac)return;if(document.hidden)ac.suspend();else if(soundOn)ac.resume()});
+// ===== email click: the button bounces, the cat wakes up (if asleep) and dances like a cat =====
 let spooking=false;
-function scare(on){ps.forEach(p=>p.setAttribute('r',on?6.6:10.6))}
 function spook(){const m=$('#mail');m.classList.remove('boing');void m.offsetWidth;m.classList.add('boing');setTimeout(()=>m.classList.remove('boing'),800);
  if(rm||spooking||!(asleep||(seated&&!busy)))return;
  spooking=true;const wasAsleep=asleep;asleep=false;busy=true;seated=false;clearTimeout(idle);
- setTimeout(()=>{cat.classList.remove('scratch','sleep','stretch','plop','happy');cat.classList.add('scared');scare(true);
-  const mr=m.getBoundingClientRect();look(mr.left+mr.width/2,mr.top+mr.height/2);
-  setTimeout(climb,wasAsleep?1300:1000)},250)}
-function climb(){cat.style.transform='';const r=cat.getBoundingClientRect(),S=2.1,
- tx=innerWidth/2-(r.left+r.width/2),ty=innerHeight/2-(r.top+r.height/2);
- cat.classList.add('leap');tail(tx<0);const t0=performance.now();
- (function jump(now){const p=Math.min(1,(now-t0)/700),e=1-(1-p)*(1-p),k=1+(S-1)*e;
-  cat.style.transform=`translate(${tx*p}px,${ty*e-60*Math.sin(Math.PI*p)}px) scale(${k})`;
-  if(p<1){requestAnimationFrame(jump);return}
-  cat.classList.remove('leap');cat.classList.add('cling');setTimeout(()=>slide(r,S,tx,ty),450)})(t0)}
-function claw(svg,hl){const p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('fill','none');p.setAttribute('stroke-linecap','round');
- if(hl){p.setAttribute('stroke','rgba(255,246,220,.92)');p.setAttribute('stroke-width','2.4')}
- else{p.setAttribute('stroke','rgba(25,15,55,.4)');p.setAttribute('stroke-width','4.6');p.setAttribute('transform','translate(1.8 1.8)')}svg.append(p);return p}
-// the cat slips down in short steps; each slip, one paw leaves a single claw scratch mark
-function slide(r,S,tx,ty){const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
- svg.style.cssText=`position:absolute;left:0;top:0;width:${document.documentElement.clientWidth}px;height:${document.documentElement.scrollHeight}px;pointer-events:none;z-index:45;overflow:visible`;document.body.append(svg);
- const flo=innerHeight-8-r.bottom,yEnd=Math.max(ty+140,flo-(S-1)*r.height/2),n=Math.max(3,Math.round((yEnd-ty)/85)),step=(yEnd-ty)/n;let i=0;
- function next(){if(i>=n){end();return}
-  const y0=ty+i*step,y1=y0+step,px=i%2?127:37,cs=[-5.5,0,5.5].map(o=>({x:px+o,a:claw(svg,0),b:claw(svg,1),y:null})),t0=performance.now();
-  (function f(now){const p=Math.min(1,(now-t0)/330),y=y0+(y1-y0)*(1-Math.pow(1-p,2.2));
-   cat.style.transform=`translate(${tx}px,${y}px) scale(${S})`;const rr=cat.getBoundingClientRect(),u=rr.width/140,py=rr.top+scrollY+8*u;
-   cs.forEach(c=>{if(c.y===null)c.y=py;const X=(rr.left+c.x*u).toFixed(1),d=`M${X} ${c.y.toFixed(1)}L${X} ${py.toFixed(1)}`;c.a.setAttribute('d',d);c.b.setAttribute('d',d)});
-   if(p<1){requestAnimationFrame(f);return}i++;setTimeout(next,230)})(t0)}
- function end(){cat.classList.remove('cling','scared');scare(false);
-  setTimeout(()=>{svg.style.transition='opacity .8s';svg.style.opacity=0;setTimeout(()=>svg.remove(),900)},5000);
-  const t1=performance.now();
-  (function g(now){const p=Math.min(1,(now-t1)/450),k=S+(1-S)*p,y=flo-(k-1)*r.height/2;cat.style.transform=`translate(${tx}px,${y}px) scale(${k})`;
-   if(p<1){requestAnimationFrame(g);return}
-   setTimeout(()=>{spooking=false;home(tx,flo,Math.max(1500,Math.min(3000,Math.hypot(tx,flo)/.24)))},500)})(t1)}
- next()}
+ setTimeout(()=>{cat.classList.remove('scratch','sleep','stretch','happy');tail(false);
+  if(wasAsleep)cat.classList.add('plop');
+  setTimeout(()=>{cat.classList.remove('plop');cat.classList.add('dance');
+   setTimeout(()=>{cat.classList.remove('dance');cat.classList.add('plop');
+    setTimeout(()=>{cat.classList.remove('plop');busy=false;seated=true;spooking=false;look(mx,my);armIdle()},600)},5600)},wasAsleep?800:200)},250)}
 document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('.chip'))return;if(asleep)wake();else chase()});
 </script>
 </body>
