@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Svitlana Sobkiv – Digital Project Manager</title>
+<title>Svitlana Sobkiv – Project Manager</title>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#2a2347;--blue:#5a4a8c;--lemon:#f1e6c4;--tang:#e8a07c;--mint:#a6d8c8;--pink:#e3b5d0;--hbg:#5a4a8c;
@@ -72,6 +72,7 @@ h2{font-size:clamp(40px,9vw,110px);line-height:.9;margin:0;letter-spacing:-.03em
 #field{isolation:isolate;position:relative;height:520px;border:2.5px dashed var(--ink);border-radius:30px;overflow:hidden;touch-action:none}
 .chip{position:absolute;padding:9px 16px;border-radius:99px;font-weight:700;font-size:17px;background:var(--ink);color:var(--mint);cursor:grab;user-select:none;touch-action:none;transition:opacity .3s,filter .3s;box-shadow:0 6px 0 rgba(0,0,0,.25)}
 .chip.m{background:var(--blue);color:var(--lemon)}.chip.d{background:var(--tang);color:var(--ink)}.chip.a{background:var(--lemon);color:var(--ink)}.chip.b{background:var(--pink);color:var(--ink)}
+.chip.g{background:#e4c27a;color:var(--ink)}
 .chip:active{cursor:grabbing;transform:scale(1.08)}.chip.dim{opacity:.18;filter:grayscale(1)}
 .hint{margin:10px 0 0;opacity:.75;font-size:17px}
 /* certs */
@@ -92,6 +93,7 @@ h2{font-size:clamp(40px,9vw,110px);line-height:.9;margin:0;letter-spacing:-.03em
 #mail,.pill{display:inline-block;font-size:clamp(17px,2.2vw,22px);font-weight:700;text-decoration:none;padding:.55em 1.3em;border:2.5px solid currentColor;border-radius:99px;transition:transform .15s;will-change:transform}
 #mail:hover,.pill:hover{background:var(--lemon);color:var(--ink)}
 .ghwrap{margin-top:28px}
+.ghwrap+.ghwrap{margin-top:14px}
 #snd{display:flex;align-items:center;gap:8px;background:var(--ink);color:var(--lemon);border:0;border-radius:99px;padding:7px 14px;font-family:inherit;font-weight:700;font-size:13px;line-height:1;cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,.2)}
 #snd i{display:inline-flex;gap:2px;align-items:flex-end;height:14px}#snd i s{display:block;width:3px;height:4px;background:currentColor;border-radius:2px}
 #snd.on i s{animation:eq 1s ease-in-out infinite}#snd.on i s:nth-child(2){animation-delay:.2s}#snd.on i s:nth-child(3){animation-delay:.4s}
@@ -176,7 +178,114 @@ h2{font-size:clamp(40px,9vw,110px);line-height:.9;margin:0;letter-spacing:-.03em
 @keyframes wag{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(9deg)}}
 .eye{transform-box:fill-box;transform-origin:center;animation:blink 4.6s infinite}
 @keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}#snd.on i s,#mail.boing,.nn span,.zz span,.hh span,.tl,.eye,.bd,.f1,.f2,#cat.stretch .bd,#cat.stretch .tl,#hero::before,#hero::after{animation:none}.rv{opacity:1;transform:none}*{transition-duration:.01s!important}}
+/* Hover effects for the email, GitHub and ArtStation buttons (only animate while pointed at) */
+@property --ang {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+#mail,
+.pill {
+  position: relative;
+  transition: transform .15s, box-shadow .35s, background-color .3s, color .3s;
+}
+
+#mail::before,
+.pill::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  padding: 3px;
+  background: conic-gradient(from var(--ang),transparent 0 50%,var(--tang) 62%,var(--pink) 76%,var(--mint) 90%,transparent 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity .3s;
+  pointer-events: none;
+}
+
+.pill:hover,
+.pill:focus-visible {
+  scale: 1.05;
+  translate: 0 -3px;
+}
+
+#mail:hover,
+.pill:hover,
+#mail:focus-visible,
+.pill:focus-visible {
+  box-shadow: 0 0 0 3px rgba(241,230,196,.35),0 0 22px 4px rgba(241,230,196,.55),0 0 52px 10px rgba(227,181,208,.4);
+}
+
+#mail:hover::before,
+.pill:hover::before,
+#mail:focus-visible::before,
+.pill:focus-visible::before {
+  opacity: 1;
+  animation: ring 1.8s linear infinite;
+}
+
+#mail:not(.boing):hover,
+.pill:hover,
+#mail:not(.boing):focus-visible,
+.pill:focus-visible {
+  background-image: linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);
+  background-size: 260% 100%;
+  animation: shine 1.3s ease-in-out infinite,glow 1.8s ease-in-out infinite;
+}
+
+.ico {
+  width: 1.15em;
+  height: 1.15em;
+  margin-right: .55em;
+  vertical-align: -.2em;
+  fill: currentColor;
+  transition: transform .35s cubic-bezier(.3,1.6,.5,1);
+}
+
+.pill:hover .ico,
+.pill:focus-visible .ico {
+  animation: wob .9s ease-in-out infinite;
+}
+
+@keyframes ring {
+  to {
+    --ang: 360deg;
+  }
+}
+
+@keyframes shine {
+  from {
+    background-position: 130% 0;
+  }
+  to {
+    background-position: -30% 0;
+  }
+}
+
+@keyframes glow {
+  0%,100% {
+    box-shadow: 0 0 0 3px rgba(241,230,196,.35),0 0 22px 4px rgba(241,230,196,.55),0 0 52px 10px rgba(227,181,208,.4);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(241,230,196,.5),0 0 32px 8px rgba(241,230,196,.75),0 0 70px 16px rgba(227,181,208,.55);
+  }
+}
+
+@keyframes wob {
+  0%,100% {
+    transform: rotate(-12deg) scale(1.2);
+  }
+  50% {
+    transform: rotate(10deg) scale(1.32);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}#snd.on i s,#mail.boing,#mail:hover,.pill:hover,.pill:hover .ico,#mail:hover::before,.pill:hover::before,.nn span,.zz span,.hh span,.tl,.eye,.bd,.f1,.f2,#cat.stretch .bd,#cat.stretch .tl,#hero::before,#hero::after{animation:none}.rv{opacity:1;transform:none}*{transition-duration:.01s!important}}
 </style>
 </head>
 <body>
@@ -187,7 +296,7 @@ h2{font-size:clamp(40px,9vw,110px);line-height:.9;margin:0;letter-spacing:-.03em
 <header><a href="#hero">Svitlana Sobkiv</a><nav><button id="snd" type="button" aria-pressed="false" aria-label="Toggle sound"><i><s></s><s></s><s></s></i><b>Sound off</b></button><a href="#about">About</a><a href="#highlights">Highlights</a><a href="#exp">Experience</a><a href="#skills">Skills</a><a href="#certs">Certificates</a><a href="#contact">Contact</a></nav></header>
 
 <section id="hero" data-bg="#5a4a8c">
-  <p class="kicker">Digital Project Manager</p>
+  <p class="kicker">Project Manager</p>
   <h1 id="name" aria-label="Svitlana Sobkiv">SVITLANA SOBKIV</h1>
   <div class="role"><span>Move your cursor over the name. Then scroll.</span></div>
 </section>
@@ -196,7 +305,7 @@ h2{font-size:clamp(40px,9vw,110px);line-height:.9;margin:0;letter-spacing:-.03em
   <div class="wrap">
     <div class="card">
       <div class="cardhead"><span class="tag">About me</span><span class="line"></span></div>
-      <div class="blk lead"><p id="story">I’m a Creative-minded Digital Project Manager who enjoys turning ideas into digital experiences that actually get built. With 3+ years of experience in IT and AI project management, I work at the intersection of technology, creativity and people - turning business ideas and requirements into clear plans, coordinating designers and developers, managing priorities and dependencies, solving problems, and keeping projects moving from concept to delivery.</p></div>
+      <div class="blk lead"><p id="story">I’m a Creative-minded Project Manager who enjoys turning ideas into digital experiences that actually get built. With 3+ years of experience in IT and AI project management, I work at the intersection of technology, creativity and people - turning business ideas and requirements into clear plans, coordinating designers and developers, managing priorities and dependencies, solving problems, and keeping projects moving from concept to delivery.</p></div>
       <div class="cols">
         <div class="blk"><h3>How I work</h3><p class="more">I’m comfortable working across the digital product lifecycle, with experience in Agile/Scrum, UX/UI, frontend and backend workflows, QA, stakeholder communication and project coordination. I enjoy bringing structure to complex projects without losing sight of the creative idea behind them.</p></div>
         <div class="blk"><h3>Creative side</h3><p class="more">My creative background adds another dimension to my PM approach. I have experience and a strong interest in 3D visualization, visual design, animation and game development, which helps me understand creative workflows and communicate effectively with designers, artists and developers. I’m especially interested in digital experiences, websites, creative campaigns, interactive products, AI-powered solutions and game development - projects where technology and creativity come together.</p></div>
@@ -258,7 +367,8 @@ h2{font-size:clamp(40px,9vw,110px);line-height:.9;margin:0;letter-spacing:-.03em
   <div class="wrap">
     <a id="mail" href="mailto:svitlana.sobkiv@gmail.com">svitlana.sobkiv@gmail.com</a>
     <div class="links"><a href="https://www.linkedin.com/in/svitlana-sobkiv/" target="_blank" rel="noopener">LinkedIn</a><a href="#hero">Back to top</a></div>
-    <div class="ghwrap"><a class="pill" href="https://github.com/LanaYavor" target="_blank" rel="noopener">Check out my GitHub page</a></div>
+    <div class="ghwrap"><a class="pill" href="https://github.com/LanaYavor" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Check out my GitHub page</a></div>
+    <div class="ghwrap"><a class="pill" href="https://www.artstation.com/svitlanasobkiv" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 0 0 2.164 1.333h13.457l-2.792-4.838H0zm24 .025c0-.484-.143-.935-.388-1.314L15.728 2.728a2.424 2.424 0 0 0-2.142-1.289H9.419L21.598 22.54l1.92-3.325c.378-.637.482-.919.482-1.467zm-11.129-3.462L7.428 4.858l-5.444 9.428h10.887z"/></svg>My portfolio on ArtStation</a></div>
     <footer class="credit">Concept, Design &amp; Development by Svitlana Sobkiv</footer>
   </div>
 </section>
@@ -267,12 +377,13 @@ h2{font-size:clamp(40px,9vw,110px);line-height:.9;margin:0;letter-spacing:-.03em
 /* ===== EDIT YOUR CONTENT HERE ===== */
 const NAME="SVITLANA SOBKIV";
 const JOBS=[
- {d:"07/2026 - Present",t:"Digital Project Manager",c:"7eminar &amp; Kadroland Platforms",b:["Manage the end-to-end delivery of digital projects, including website improvements, AI-powered features, and chatbot integrations.","Coordinate developers, designers, AI specialists, and stakeholders to translate business and marketing goals into product requirements, tasks, and deliverables.","Plan project timelines, prioritize tasks, track progress, manage dependencies, and ensure timely delivery of features and improvements.","Collaborate on UI/UX design and user journeys to improve website usability, customer experience, and engagement with digital products.","Participate in AI chatbot development and testing, evaluating response quality, relevance, and functionality to improve the user experience.","Test web platform features and AI integrations, identify bugs, coordinate fixes, and validate solutions before release.","Support the development of digital content and interactive learning experiences, aligning platform functionality with audience needs and business objectives.","Use AI tools to streamline workflows, support content and product development, and improve team efficiency.","Maintain project documentation, communicate updates to stakeholders, and coordinate feedback throughout the development lifecycle."]},
+ {d:"07/2026 - Present",t:"Project Manager",c:"7eminar &amp; Kadroland Platforms",b:["Manage the end-to-end delivery of digital projects, including website improvements, AI-powered features, and chatbot integrations.","Coordinate developers, designers, AI specialists, and stakeholders to translate business and marketing goals into product requirements, tasks, and deliverables.","Plan project timelines, prioritize tasks, track progress, manage dependencies, and ensure timely delivery of features and improvements.","Collaborate on UI/UX design and user journeys to improve website usability, customer experience, and engagement with digital products.","Participate in AI chatbot development and testing, evaluating response quality, relevance, and functionality to improve the user experience.","Test web platform features and AI integrations, identify bugs, coordinate fixes, and validate solutions before release.","Support the development of digital content and interactive learning experiences, aligning platform functionality with audience needs and business objectives.","Use AI tools to streamline workflows, support content and product development, and improve team efficiency.","Maintain project documentation, communicate updates to stakeholders, and coordinate feedback throughout the development lifecycle."]},
  {d:"09/2023 - 03/2026",t:"Project Manager",c:"TELUS International (TELUS Digital), Canada",b:["Coordinated IT, AI, and data-related projects, aligning client expectations, business requirements, and technical team deliverables.","Communicated with international stakeholders to clarify requirements, confirm priorities, resolve issues, and provide project status updates.","Translated business needs into actionable tasks, documented requirements, and tracked progress, dependencies, blockers, and deadlines.","Supported project planning, sprint planning, workload coordination, and milestone tracking to keep delivery on schedule.","Collaborated with cross-functional teams to resolve workflow issues, manage changing priorities, and maintain alignment on project objectives.","Maintained project documentation, status reports, action items, and task tracking in Jira and ClickUp.","Coordinated quality assurance and follow-up activities, helping ensure deliverables met agreed requirements.","Identified delivery risks and potential blockers, communicated issues to relevant stakeholders, and supported timely resolution.","Contributed to process improvements and more structured project tracking and reporting."]},
- {d:"08/2022 - 09/2023",t:"Junior Project Coordinator",c:"TELUS International (TELUS Digital), Canada",b:["Supported day-to-day project coordination, including task tracking, follow-ups, meetings, and deadlines.","Maintained Jira and ClickUp boards, tracking tasks, priorities, dependencies, and project progress.","Supported Scrum ceremonies, including daily stand-ups, sprint planning, and backlog refinement.","Prepared and maintained project documentation, technical requirements, meeting notes, and status updates.","Assisted with stakeholder communication and coordinated follow-ups with project team members.","Monitored project risks, blockers, and dependencies and escalated issues when needed.","Supported project planning and team coordination."]}
+ {d:"08/2022 - 09/2023",t:"Junior Project Coordinator",c:"TELUS International (TELUS Digital), Canada",b:["Supported day-to-day project coordination, including task tracking, follow-ups, meetings, and deadlines.","Maintained Jira and ClickUp boards, tracking tasks, priorities, dependencies, and project progress.","Supported Scrum ceremonies, including daily stand-ups, sprint planning, and backlog refinement.","Prepared and maintained project documentation, technical requirements, meeting notes, and status updates.","Assisted with stakeholder communication and coordinated follow-ups with project team members.","Monitored project risks, blockers, and dependencies and escalated issues when needed.","Supported project planning and team coordination."]},
+ {d:"05/2017 - 08/2022",t:"Game Designer",c:"Freelance",b:["Developed game concepts, gameplay mechanics, and player interaction flows, translating creative ideas into structured design concepts.", "Worked on game design documentation, defining gameplay logic, features, rules, and player objectives to support implementation.", "Explored level design, game progression, balancing, and player experience to create engaging and intuitive gameplay.", "Collaborated across creative and technical aspects of game production, considering the relationship between gameplay mechanics, visual assets, animations, and implementation requirements.", "Worked with 2D/3D visual concepts and production workflows, including 3D modelling, visualization, and animation.", "Considered UI/UX principles and player interaction when developing gameplay concepts and interface ideas.", "Iterated on design concepts based on feedback, refining mechanics, interactions, and overall gameplay experience.", "Balanced creative goals with technical feasibility and production requirements, helping translate ideas into actionable development tasks.", "Built a foundation in game development workflows that supports effective communication between designers, artists, and developers."]}
  
 ];
-const SK={"Project Management":["Jira","ClickUp","Notion"],"Collaboration & Reporting":["Google Workspace","Microsoft Excel"],"Design & Product":["Figma"],"AI Tools":["ChatGPT","Claude","Gemini"],"Technical Knowledge":["SDLC","UI/UX","Frontend & backend workflows","Software testing & QA coordination","AI/data project workflows","GitHub"]};
+const SK={"Project Management":["Jira","ClickUp","Notion"],"Collaboration & Reporting":["Google Workspace","Microsoft Excel"],"Design & Product":["Figma"],"AI Tools":["ChatGPT","Claude","Gemini"],"Technical Knowledge":["SDLC","UI/UX","Frontend & backend workflows","Software testing & QA coordination","AI/data project workflows","GitHub"],"Game development":["3D","2D","Animation","UE5"]};
 const CERTS=[["Diploma in Modern Project Management","Alison · Oct 2026"],["Project Management Foundations","Project Management Institute · Mar 2024"],["English Language Progression: Business English","UK College of Business and Computing Ltd · Jul 2020"]];
 /* =================================== */
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
@@ -286,9 +397,9 @@ function tick(t){L.forEach((s,i)=>{const r=s.getBoundingClientRect(),cx=r.left+r
 // story words
 const st=$('#story');st.innerHTML=st.textContent.split(' ').map(w=>`<span>${w}</span>`).join(' ');const W=$$('#story span');
 // jobs
-$('#track').innerHTML='<article class="job intro"><small>Professional experience</small><h3>TELUS Digital, Canada<br>7eminar &amp; Kadroland</h3><small>08/2022 - Present &middot; keep scrolling &rarr;</small></article>'+JOBS.map(j=>`<article class="job"><small>${j.d}${j.c?' &middot; '+j.c:''}</small><h3>${j.t}</h3><ul>${j.b.map(x=>`<li>${x}</li>`).join('')}</ul></article>`).join('');
+$('#track').innerHTML='<article class="job intro"><small>Professional experience</small><h3>TELUS Digital, Canada<br>7eminar &amp; Kadroland</h3><small>05/2017 - Present &middot; keep scrolling &rarr;</small></article>'+JOBS.map(j=>`<article class="job"><small>${j.d}${j.c?' &middot; '+j.c:''}</small><h3>${j.t}</h3><ul>${j.b.map(x=>`<li>${x}</li>`).join('')}</ul></article>`).join('');
 // skills
-const field=$('#field'),fl=$('#filters'),cls={"Project Management":'',"Collaboration & Reporting":'m',"Design & Product":'d',"AI Tools":'a',"Technical Knowledge":'b'};let z=1;
+const field=$('#field'),fl=$('#filters'),cls={"Project Management":'',"Collaboration & Reporting":'m',"Design & Product":'d',"AI Tools":'a',"Technical Knowledge":'b',"Game development":'g'};let z=1;
 ['All',...Object.keys(SK)].forEach((k,i)=>{const b=document.createElement('button');b.className='f';b.textContent=k;b.setAttribute('aria-pressed',i==0);b.onclick=()=>{$$('.f').forEach(x=>x.setAttribute('aria-pressed',x==b));$$('.chip').forEach(c=>c.classList.toggle('dim',k!='All'&&c.dataset.g!=k))};fl.append(b)});
 function place(){const fw=field.clientWidth;let x=14,y=14,rowH=0;$$('.chip').forEach(c=>{if(c.dataset.moved)return;const w=c.offsetWidth;if(x+w>fw-14){x=14;y+=rowH+16;rowH=0}c.style.left=x+'px';c.style.top=y+'px';x+=w+14;rowH=Math.max(rowH,c.offsetHeight)})}
 Object.entries(SK).forEach(([g,a])=>a.forEach(n=>{const c=document.createElement('div');c.className='chip '+cls[g];c.textContent=n;c.dataset.g=g;field.append(c);
@@ -302,7 +413,6 @@ let order=CERTS.map((_,i)=>i);const cards=$$('.cert');
 function lay(){order.forEach((ci,p)=>{const c=cards[ci];c.style.zIndex=10-p;c.style.transform=`translate(${p*14}px,${p*-12}px) rotate(${[0,4,-5,7][p%4]}deg) scale(${1-p*.04})`;c.style.opacity=p>3?0:1;c.tabIndex=p?-1:0})}
 function next(){order.push(order.shift());lay()}$('#shuf').onclick=next;lay();
 // contact
-if(!rm){const m=$('#mail');m.parentElement.onpointermove=e=>{const r=m.getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2);if(Math.hypot(dx,dy)<320)m.style.transform=`translate(${dx*.12}px,${dy*.18}px)`;else m.style.transform=''}}
 // copy email
 const toast=$('#toast');let tt=0;
 function say(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('show'),2200)}
